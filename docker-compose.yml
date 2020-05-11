@@ -1,0 +1,38 @@
+version: '3'
+services:
+  flask:
+    hostname: flask
+    build: ./back
+    ports:
+      - 5000:5000
+    depends_on: 
+      - database
+  vuejs:
+    hostname: vuejs
+    build: ./front
+    ports:
+      - 8080:8080
+    depends_on: 
+      - flask
+  database:
+    hostname: postgres
+    image: "postgres:12.2-alpine"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aaaabbbb}
+      POSTGRES_USER: ${POSTGRES_USER:-berry}
+      POSTGRES_DB: ${POSTGRES_DB:-ezra}
+    ports:
+      - 5432:5432
+    #volumes:
+    #  - db-data:/var/lib/postgresql/data
+  database-management:
+    hostname: pgadmin
+    image: "dpage/pgadmin4:latest"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-berry@mailbox.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-1234}
+      PGADMIN_LISTEN_PORT: 9090
+    ports:
+      - 9090:9090
+volumes:
+  db-data:
