@@ -19,8 +19,8 @@ services:
     environment:
       FLASK_ENV: 'development'
       AWS_REGION: 'eu-west-1'
-      AWS_USER_POOL_ID: 'eu-west-1_nVlLAlgil'
-      AWS_USER_POOL_CLIENT_ID: '3pj642ka2nivspnqtp6t503bj9'
+      AWS_USER_POOL_ID: 'eu-west-1_KQHDXh3Kd'
+      AWS_USER_POOL_CLIENT_ID: '5ommi3j1g2r0c9uvm3snghchoj'
     depends_on: 
       - flask
     volumes:

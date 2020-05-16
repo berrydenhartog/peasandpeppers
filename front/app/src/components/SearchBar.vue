@@ -5,10 +5,7 @@
         <div class="box">
           <div class="field has-addons">
             <div class="control is-expanded">
-              <input class="input has-text-centered" type="search" placeholder="Search product">
-            </div>
-            <div class="control">
-              <a class="button is-info">Search</a>
+              <input class="input has-text-centered" type="search" placeholder="Zoek Product">
             </div>
           </div>
         </div>

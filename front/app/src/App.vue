@@ -3,10 +3,10 @@
     <!-- START NAV -->
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="">
+        <router-link class="navbar-item" :to="{ name: 'Home' }">
           <img src="./assets/logo.png" alt="Logo">
-        </a>
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        </router-link>
+        <a role="button" class="navbar-burger" >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -14,19 +14,42 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-start">
-          <router-link class="navbar-item" :to="{ name: 'Home' }">Home</router-link>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Inloggen</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">Mijn bestellingen</a>
+              <a class="navbar-item">Profiel</a>
+              <hr class="navbar-divider">
+              <router-link class="navbar-item" :to="{ name: 'Authenticator' }">
+                Login
+              </router-link>
+            </div>
+          </div>  
+          <router-link class="navbar-item" :to="{ name: 'Home' }">Producten</router-link>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Meer</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">Klantenservice</a>
+              <a class="navbar-item">Zakelijk Bestellen</a>
+              <a class="navbar-item">Over Ezra</a>
+            </div>
+          </div>  
         </div>
         <div class="navbar-end">
-          <router-link class="navbar-item" :to="{ name: 'Subscription' }">Subscriptions</router-link>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">Account</a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item">Profile</a>
-              <a class="navbar-item">Settings</a>
-              <hr class="navbar-divider">
-              <div class="navbar-item">Logout</div>
+          <div class="navbar-item field">
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="search" placeholder="Zoek Product">
+              <span class="icon is-small is-right">
+                <i class="mdi mdi-magnify"></i>
+              </span>
             </div>
           </div>
+          <router-link class="navbar-item" :to="{ name: 'Subscription' }">Abonnement</router-link>
+          <a class="navbar-item">
+            <span class="icon">
+              <i class = "mdi mdi-24px mdi-cart-outline"></i> 
+            </span>
+          </a>
         </div>
       </div>
     </nav>
