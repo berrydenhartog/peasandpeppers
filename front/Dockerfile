@@ -8,7 +8,7 @@ RUN adduser -D ezra
 COPY app /home/ezra/app
 RUN chown -R ezra:ezra /home/ezra/app
 
-USER ezra
+#USER ezra
 
 WORKDIR /home/ezra/app/
 RUN npm install 

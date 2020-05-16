@@ -5,15 +5,26 @@ services:
     build: ./back
     ports:
       - 5000:5000
+    environment:
+      FLASK_ENV: 'development'
     depends_on: 
       - database
+    volumes:
+      - ./back/app/:/home/ezra/app
   vuejs:
     hostname: vuejs
     build: ./front
     ports:
-      - 8080:8080
+      - 80:8080
+    environment:
+      FLASK_ENV: 'development'
+      AWS_REGION: 'eu-west-1'
+      AWS_USER_POOL_ID: 'eu-west-1_nVlLAlgil'
+      AWS_USER_POOL_CLIENT_ID: '3pj642ka2nivspnqtp6t503bj9'
     depends_on: 
       - flask
+    volumes:
+      - ./front/app/src/:/home/ezra/app/src/
   database:
     hostname: postgres
     image: "postgres:12.2-alpine"
