@@ -2,7 +2,7 @@
   <div class="products">
     <div class="container">
       <div class="row columns is-multiline">
-        <div v-for="item in items" :key="item.message" class="column is-one-third">
+        <div v-for="item in items" :key="item.message" class="column is-one-quarter">
           <div class="card large round">
             <div class="card-image ">
               <figure class="image">

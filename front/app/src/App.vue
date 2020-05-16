@@ -6,13 +6,13 @@
         <router-link class="navbar-item" :to="{ name: 'Home' }">
           <img src="./assets/logo.png" alt="Logo">
         </router-link>
-        <a role="button" class="navbar-burger" >
+        <a role="button" class="navbar-burger" v-on:click="showNav = !showNav" >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div class="navbar-menu">
+      <div class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">Inloggen</a>
@@ -55,7 +55,6 @@
     </nav>
     <!-- END NAV -->
     <div id="app">
-
       <router-view/>
     </div>
 
@@ -69,3 +68,13 @@
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Appmain',
+  data: () => ({
+    showNav: false
+  }),
+}
+</script>
+
