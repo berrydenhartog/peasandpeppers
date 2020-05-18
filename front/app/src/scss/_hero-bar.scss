@@ -1,0 +1,11 @@
+section.hero {
+    background-size: cover;
+    background-position: center center;
+
+    .hero-body h1.title {
+        color:$white; 
+    }
+    .hero-body h2.subtitle {
+        color:$white; 
+    }
+}

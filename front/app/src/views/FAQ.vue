@@ -1,6 +1,6 @@
 <template>
-  <div class="myhome">
-    <HeroBar title="FRESH MAIL DELIVERY" subtitle="Vegan all the way" :background="require('@/assets/home.jpg')" />
+  <div class="myfaq">
+    <HeroBar title="Frequenty asked questions" :background="require('@/assets/faq.jpg')" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import HeroBar from '@/components/HeroBar.vue'
 
 export default {
-  name: 'Home',
+  name: 'FAQ',
   components: {
       HeroBar,
   }

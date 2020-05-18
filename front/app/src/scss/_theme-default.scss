@@ -1,7 +1,32 @@
 @import 'bulma/sass/utilities/initial-variables.sass';
-$body-background-color: #d7f3cc ;
 
-#app {
-    padding-top: 10px;
 
+// bulma colors
+/* Base: Size  */
+$size-base: 1rem;
+$default-padding: $size-base * 3.5;
+
+/* Default font */
+$family-sans-serif: "Maven Pro", sans-serif;
+$family-primary: $family-sans-serif;
+
+/* Base color */
+$base-color: rgb(143,169,156);
+$base-color-light: rgba(24,28,33,0.06);
+
+/* background colors Bulma override */
+$body-background-color: $white-ter;
+
+/* Footer: Bulma override */
+$footer-background-color: $white;
+
+/* colors: Bulma override */
+//$primary: $base-color;
+$link: $base-color;
+//$link-visited: $purple;
+
+.mainpadding {
+    padding-top: $default-padding;
+    padding-bottom: $default-padding;
 }
+
