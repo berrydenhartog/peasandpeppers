@@ -48,16 +48,6 @@
           </div>
         </div>
         <div class="column">
-          <h1 class="title is-5">VOOR BEDRIJVEN</h1>
-          <div class="content">
-            <ul>
-              <li>
-
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="column">
           <h1 class="title is-5">Volg ons op social</h1>
           <span class="icon is-large">
             <a href="https://www.facebook.com" target="_blank">
