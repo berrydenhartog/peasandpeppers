@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="column">
-          <h1 class="title is-5">OVER ONS</h1>
+          <h1 class="title is-5">Over Ons</h1>
           <div class="content">
             <ul>
               <li>

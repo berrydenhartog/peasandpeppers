@@ -11,7 +11,7 @@
             </h2>
             <div class="field">
               <div class="control has-icons-left ">
-                <input v-bind:class="{'is-danger': checknaam}" v-model="naam" class="input is-primary" type="text" placeholder="naam" required>
+                <input v-bind:class="{'is-danger': checknaam}" v-model="naam" class="input is-primary" type="text" placeholder="Naam" required>
                 <span class="icon is-small is-left">
                     <i class="mdi mdi-account"></i>
                 </span>
@@ -19,7 +19,7 @@
             </div>
             <div class="field">
               <div class="control has-icons-left ">
-                <input v-bind:class="{'is-danger': checkmail}" v-model="email" class="input is-primary" type="email" placeholder="Email adres">
+                <input v-bind:class="{'is-danger': checkmail}" v-model="email" class="input is-primary" type="email" placeholder="Email-adres">
                 <span class="icon is-small is-left">
                     <i class="mdi mdi-email"></i>
                 </span>
