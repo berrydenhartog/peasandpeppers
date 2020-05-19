@@ -3,14 +3,14 @@ from node:14.2.0-alpine3.11 as builder
 
 RUN npm install -g @vue/cli
 
-RUN adduser -D ezra
+RUN adduser -D peasenpeppers
 
-COPY app /home/ezra/app
-RUN chown -R ezra:ezra /home/ezra/app
+COPY app /home/peasenpeppers/app
+RUN chown -R peasenpeppers:peasenpeppers /home/peasenpeppers/app
 
-#USER ezra
+USER peasenpeppers
 
-WORKDIR /home/ezra/app/
+WORKDIR /home/peasenpeppers/app/
 RUN npm install 
 CMD [ "/usr/local/bin/npm","run","serve" ]
 

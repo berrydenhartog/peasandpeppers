@@ -1,9 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import cognitoAuth from '@/cognito'
 /* eslint-disable */
 
 Vue.use(VueRouter);
+
+function requireAuth (to, from, next) {
+  cognitoAuth.isAuthenticated((err, loggedIn) => {
+    console.log(err,loggedIn)
+    if (err) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    }
+    if (!loggedIn) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  })
+}
 
 const routes = [
   {
@@ -24,7 +45,13 @@ const routes = [
   {
     path: '/account/',
     name: 'Account',
-    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue')
+    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue'),
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/login/',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
   {
     path: '/winkelwagen/',

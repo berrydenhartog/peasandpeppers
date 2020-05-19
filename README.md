@@ -1,5 +1,12 @@
-# ezra
-This is the webshop project that has a python backend, javascript frontend and a postgresql database. 
+# PeasEnPeppers
+Webshop voor Ezra Pronk waar ze vegan gerechten verkoopt
 
 # Amazon web services
-This project uses AWS. More specificly the aws cognito service to manage users. please setup aws first before you run this project.
+This project uses AWS. 
+    - s3 for static web storage
+    - cognito for user management and access
+    - api gatway for api calls
+    - dynamodb for database
+    - lambda function for quering database
+    - sns for SMS messages
+    - SES for e-mail services
