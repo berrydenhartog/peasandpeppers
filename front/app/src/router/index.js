@@ -1,29 +1,36 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// eslint-disable-next-line
+import { components, AmplifyEventBus } from 'aws-amplify-vue';
 import Home from '../views/Home.vue'
-import cognitoAuth from '@/cognito'
-/* eslint-disable */
+import AmplifyStore from '../store/';
 
 Vue.use(VueRouter);
 
-function requireAuth (to, from, next) {
-  cognitoAuth.isAuthenticated((err, loggedIn) => {
-    console.log(err,loggedIn)
-    if (err) {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
-    }
-    if (!loggedIn) {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
-    } else {
-      next()
-    }
-  })
+let user;
+
+AmplifyEventBus.$on('authState', async (state) => {
+  if (state === 'signedOut'){
+    user = null;
+    AmplifyStore.commit('setUser', null);
+    router.push({path: '/auth'})
+  } else if (state === 'signedIn') {
+    user = await getUser();
+    router.push({path: '/'})
+  }
+});
+
+function getUser() {
+  return Vue.prototype.$Amplify.Auth.currentAuthenticatedUser().then((data) => {
+    if (data && data.signInUserSession) {
+      AmplifyStore.commit('setUser', data);
+      return data;
+    } 
+  // eslint-disable-next-line
+  }).catch((e) => {
+    AmplifyStore.commit('setUser', null);
+    return null
+  });
 }
 
 const routes = [
@@ -43,15 +50,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "taarten" */ '../views/Taarten.vue')
   },
   {
+    path: '/login/',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+  },
+  {
     path: '/account/',
     name: 'Account',
     component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue'),
-    beforeEnter: requireAuth
-  },
-  {
-    path: '/login/',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    meta: { requiresAuth: true }
   },
   {
     path: '/winkelwagen/',
@@ -99,6 +106,22 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeResolve(async (to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    user = await getUser();
+    if (!user) {
+      return next({
+        name: 'Login',
+        query: {
+          redirect: to.fullPath,
+        }
+      });
+    }
+    return next()
+  }
+  return next()
 })
 
 export default router

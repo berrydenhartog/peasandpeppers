@@ -11,4 +11,3 @@ services:
       VUE_APP_COGNITO_CLIENT_ID: '5ommi3j1g2r0c9uvm3snghchoj'
     volumes:
       - ./front/app/src/:/home/peasenpeppers/app/src/
-      - ./front/app/dist/:/home/peasenpeppers/app/dist/

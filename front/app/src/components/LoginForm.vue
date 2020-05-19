@@ -4,7 +4,7 @@
       <div class="column">
         <h1 class="title">Login</h1>
         <h2 class="subtitle">
-          U moet inloggen
+          Beheer uw bestellingen
         </h2>
         <div class="field">
           <div class="control has-icons-left ">
@@ -23,8 +23,6 @@
           </p>
         </div>
         <div v-if="errors.length" class="notification is-danger">
-          <button class="delete"></button>
-          <b>Het formulier is niet goed ingevuld:</b>
           <ul>
             <li v-for="error in errors" :key="error">{{ error }}</li>
           </ul>
@@ -40,7 +38,7 @@
 </template>
 
 <script>
-import cognitoAuth from '@/cognito'
+import { Auth } from 'aws-amplify'
 
 export default {
   name: 'ContactForm',
@@ -68,7 +66,7 @@ export default {
     },
   },
   methods: {
-    submitForm: function () {
+    async submitForm() {
       this.errors = [];
 
       // eslint-disable-next-line
@@ -77,19 +75,20 @@ export default {
       }
 
       if (this.password < 8) {
-        this.errors.push('Het wachtwoord moet minimaal 8 karakter lang zijn.');
+        this.errors.push('Het wachtwoord moet minimaal 8 karakters lang zijn.');
       }
 
 
       if (this.errors.length == 0) {
-        const mythis = this;
-        cognitoAuth.authenticate(this.email,this.password, function(result) {
-          if (result.code == "newPasswordRequired") {
-            mythis.$emit('newPasswordRequired', true)
-          } else if (result.code == "NotAuthorizedException" ) {
-            mythis.errors.push(result.message);
-          } 
-        });
+        try {
+          console.log(this.email, this.password)
+          const user = await Auth.signIn(this.email, this.password);
+          console.log("asynchronous logging has val:",user) 
+        } catch (error) {
+          console.log('error signing in', error);
+          this.errors.push(error.message);
+          //challengeName
+        }
       }
     },
   },
