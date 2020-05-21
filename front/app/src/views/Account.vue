@@ -1,16 +1,7 @@
 <template>
   <div class="myaccount">
-    <HeroBar title="Account" subtitle="manage uw bestellingen" :background="require('@/assets/account.jpg')" />
-    <div class="inputRow" v-for="field in fields" v-bind:key="field.name">
-      <div v-if="field.type === 'string'">
-        <label class="inputLabel">{{field.label || field.name}}</label>
-        <input
-          class="input"
-          v-model="user[field.name]"
-        />
-      </div>
-      <div class="lineBreak" v-if="field.type === 'lineBreak'"></div>
-    </div>
+    <HeroBar :title="user.attributes['email']" subtitle="manage uw bestellingen" :background="require('@/assets/account.jpg')" />
+
   </div>
 </template>
 
@@ -26,20 +17,18 @@ export default {
   },
   data () {
     return {
-      user: {},
       fields: [
         { type: 'string', name: 'email', label: 'Email' },
-        { type: 'string', name: 'phone_number', label: 'Phone Number' }
       ],
     }
   },
-  async mounted () {
-    if (AmplifyStore.state.user) {
-      const currentUser = await this.$Amplify.Auth.currentUserInfo()
-      this.user = {
-        username: currentUser.username,
-        ...currentUser.attributes
-      }
+  //async mounted () {
+  //  if (AmplifyStore.state.user) {
+  //  }
+  //},
+  computed: {
+    user() { 
+      return AmplifyStore.state.user
     }
   },
   methods: {

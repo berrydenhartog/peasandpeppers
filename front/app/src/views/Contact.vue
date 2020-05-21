@@ -3,7 +3,7 @@
     <HeroBar title="HAPPY TO HELP!" subtitle="Heb je vragen neem dan contact met ons op" :background="require('@/assets/contact.jpg')" />
     <section>
       <div class="container mainpadding">
-        <ContactForm title="Heb je een vraag?" subtitle="Laat het ons hieronder weten en wij nemen zo snel mogelijk contact met je op." />
+        <ContactForm title="Heb je een vraag?" subtitle="Laat het ons hieronder weten." />
       </div>
     </section>
   </div>

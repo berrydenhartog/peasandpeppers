@@ -2,7 +2,7 @@
   <div class="mylogin">
     <section>
       <div class="container mainpadding">
-        <LoginForm />
+        <Authenticator />
       </div>
     </section>
   </div>
@@ -10,12 +10,12 @@
 
 <script>
 // @ is an alias to /src
-import LoginForm from '@/components/LoginForm.vue'
+import Authenticator from '@/components/Authenticator.vue'
 
 export default {
   name: 'Login',
   components: {
-      LoginForm,
+      Authenticator,
   }
 }
 </script>

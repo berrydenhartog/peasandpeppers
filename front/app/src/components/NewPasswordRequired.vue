@@ -2,21 +2,18 @@
   <div class="myloginform">       
     <div class="columns">
       <div class="column">
-        <h1 class="title">Login</h1>
-        <h2 class="subtitle">
-          Beheer uw bestellingen
-        </h2>
-        <div class="field">
-          <div class="control has-icons-left ">
-            <input v-bind:class="{'is-danger': checkmail}" v-model="email" class="input is-primary" type="email" placeholder="Email">
-            <span class="icon is-small is-left">
-                <i class="mdi mdi-email"></i>
-            </span>
-          </div>
-        </div>
+        <h1 class="title">Verander uw Wachtwoord</h1>
         <div class="field">
           <p class="control has-icons-left">
             <input v-bind:class="{'is-danger': checkpassword}" v-model="password" class="input is-primary" type="password" placeholder="Password">
+            <span class="icon is-small is-left">
+              <i class="mdi mdi-lock"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input v-bind:class="{'is-danger': checkpasswordrepeat}" v-model="passwordrepeat" class="input is-primary" type="password" placeholder="Password herhaal">
             <span class="icon is-small is-left">
               <i class="mdi mdi-lock"></i>
             </span>
@@ -41,26 +38,26 @@
 import { Auth } from 'aws-amplify'
 
 export default {
-  name: 'ContactForm',
+  name: 'NewPasswordRequiredForm',
   data() {
     return {
       isLoading: false,
-      email: null,
       password: null,
+      passwordrepeat: null,
       showError: false,
       errors: [],
     }
   },
+  props: ['user'],
   computed: {
-    checkmail(){
-      // eslint-disable-next-line
-      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-        return false 
-      }
-      return true
-    },
     checkpassword(){
       if (!this.password || this.password.length < 8 ) {
+        return true
+      }
+      return false
+    },
+    checkpasswordrepeat(){
+      if (!this.passwordrepeat || this.passwordrepeat.length < 8 ) {
         return true
       }
       return false
@@ -70,30 +67,31 @@ export default {
     async submitForm() {
       this.errors = [];
 
-      // eslint-disable-next-line
-      if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-        this.errors.push('Vul een correct emailadres in.')
-      }
-
       if (this.password < 8) {
         this.errors.push('Het wachtwoord moet minimaal 8 karakters lang zijn.');
       }
 
+      if (this.passwordrepeat < 8) {
+        this.errors.push('Het wachtwoord herhaal moet minimaal 8 karakters lang zijn.');
+      }
+
+      if (this.password != this.passwordrepeat) {
+        this.errors.push('De wachtwoorden zijn niet gelijk.');
+      }
 
       if (this.errors.length == 0) {
         this.isLoading = true;
-        try {
-          const user = await Auth.signIn(this.email, this.password);
-          if(user.challengeName ==null) {
-            this.$router.push({ name: 'Account'})
-          }
-          this.$emit('user', user)
+        Auth.completeNewPassword(
+          this.user, 
+          this.password,
+        // eslint-disable-next-line
+        ).then(user => {
           this.isLoading = false;
-
-        } catch (error) {
+          this.$router.push({ name: 'Account'})
+        }).catch(error => {
           this.errors.push(error.message);
           this.isLoading = false;
-        }
+        });
       }
     },
   },

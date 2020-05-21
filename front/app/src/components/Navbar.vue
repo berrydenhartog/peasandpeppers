@@ -45,20 +45,29 @@
           </div> 
         </div>
         <div class="navbar-end">
-          <a class="navbar-item">
-            <span class="icon is-large">
-              <router-link class="navbar-item" :to="{ name: 'Account' }">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <router-link class="navbar-item is-uppercase" :to="{ name: 'Account' }">
+              <span class="icon is-large">
                 <i class = "mdi mdi-24px mdi-account"></i> 
+              </span>
+            </router-link>
+            <div class="navbar-dropdown">
+              <router-link class="navbar-item is-uppercase" :disabled="!user" :to="{ name: 'Account'}">
+                Bestellingen
               </router-link>
-            </span>
-          </a>
-          <a class="navbar-item">
+              <router-link v-if="!user" class="navbar-item is-uppercase" :to="{ name: 'Login' }">
+                Login
+              </router-link>
+              <a v-if="user" @click="logout" class="navbar-item is-uppercase">
+                Logout
+              </a>
+            </div>
+          </div> 
+          <router-link class="navbar-item" :to="{ name: 'Winkelwagen' }">
             <span class="icon is-large">
-              <router-link class="navbar-item" :to="{ name: 'Winkelwagen' }">
-                <i class = "mdi mdi-24px mdi-cart-outline"></i> 
-              </router-link>
+              <i class = "mdi mdi-24px mdi-cart-outline"></i> 
             </span>
-          </a> 
+          </router-link>
         </div>
       </div>
     </nav>
@@ -66,8 +75,27 @@
 </template>
 
 <script>
+import AmplifyStore from '../store/'
+// eslint-disable-next-line
+import { components, AmplifyEventBus } from 'aws-amplify-vue'
+
 export default {
   name: 'Navbar',
   props: ['showNav'],
+  computed: {
+    user() { 
+      return AmplifyStore.state.user
+    }
+  },
+  methods: {
+    async logout() {
+      // eslint-disable-next-line
+      this.$Amplify.Auth.signOut()
+      .then(() => {
+        return AmplifyEventBus.$emit('authState', 'signedOut')
+      })
+      .catch(e => this.setError(e));
+    }
+  }
 }
 </script>

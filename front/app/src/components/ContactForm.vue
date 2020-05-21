@@ -16,7 +16,7 @@
         </div>
         <div class="field">
           <div class="control has-icons-left ">
-            <input v-bind:class="{'is-danger': checkmail}" v-model="email" class="input is-primary" type="email" placeholder="Email-adres">
+            <input v-bind:class="{'is-danger': checkmail}" v-model="email" class="input is-primary" type="email" placeholder="Email">
             <span class="icon is-small is-left">
                 <i class="mdi mdi-email"></i>
             </span>
@@ -28,15 +28,13 @@
           </div>
         </div>
         <div v-if="errors.length" class="notification is-danger">
-          <button class="delete"></button>
-          <b>Het formulier is niet goed ingevuld:</b>
           <ul>
             <li v-for="error in errors" :key="error">{{ error }}</li>
           </ul>
         </div>
         <div class="field ">
           <div class="control">
-            <button v-on:click="submitForm" class="button is-link">Verstuur</button>
+            <button v-bind:class="{'is-loading': isLoading}" v-on:click="submitForm" class="button is-link">Verstuur</button>
           </div>
         </div>
       </div>
@@ -67,7 +65,7 @@ export default {
   },
   data() {
     return {
-
+      isLoading: false,
       email: null,
       naam: null,
       bericht: null,
@@ -101,21 +99,28 @@ export default {
     submitForm: function () {
       this.errors = [];
 
+
       // eslint-disable-next-line
       if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-        this.errors.push('Vul AUB een correct emailadres toe.')
+        this.errors.push('Vul een correct emailadres in.')
       }
 
       if (!this.naam) {
-        this.errors.push('Vul AUB uw naam toe.');
+        this.errors.push('Vul uw naam in.');
       }
       if (!this.bericht) {
-        this.errors.push('Vul AUB een bericht toe.');
+        this.errors.push('Vul een bericht in.');
       }
 
       if (this.errors.length == 0) {
+        this.isLoading = true;
         this.activeModal = true;
+        this.email=null;
+        this.naam=null;
+        this.bericht=null;
+        this.isLoading = false;
       }
+
     },
   },
 }

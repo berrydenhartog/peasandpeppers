@@ -10,4 +10,4 @@ services:
       VUE_APP_COGNITO_APP_DOMAIN: 'eu-west-1'
       VUE_APP_COGNITO_CLIENT_ID: '5ommi3j1g2r0c9uvm3snghchoj'
     volumes:
-      - ./front/app/src/:/home/peasenpeppers/app/src/
+      - ./front/app/src/:/home/peasandpeppers/app/src/

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 // eslint-disable-next-line
 import { components, AmplifyEventBus } from 'aws-amplify-vue';
 import Home from '../views/Home.vue'
-import AmplifyStore from '../store/';
+import AmplifyStore from '../store/'
 
 Vue.use(VueRouter);
 
@@ -13,10 +13,10 @@ AmplifyEventBus.$on('authState', async (state) => {
   if (state === 'signedOut'){
     user = null;
     AmplifyStore.commit('setUser', null);
-    router.push({path: '/auth'})
+    router.push({path: '/'})
   } else if (state === 'signedIn') {
     user = await getUser();
-    router.push({path: '/'})
+    router.push({path: '/account/'})
   }
 });
 

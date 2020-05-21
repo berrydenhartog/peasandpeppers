@@ -3,15 +3,23 @@ from node:14.2.0-alpine3.11 as builder
 
 RUN npm install -g @vue/cli
 
-RUN adduser -D peasenpeppers
+RUN adduser -D peasandpeppers
 
-COPY app /home/peasenpeppers/app
-RUN chown -R peasenpeppers:peasenpeppers /home/peasenpeppers/app
+COPY app /home/peasandpeppers/app
 
-USER peasenpeppers
+WORKDIR /home/peasandpeppers/app/
 
-WORKDIR /home/peasenpeppers/app/
+# install dependencies
 RUN npm install 
+
+# build source
+RUN npm run build
+
+# set permissions ot new user
+#RUN chown -R peasandpeppers:peasandpeppers /home/peasandpeppers/app
+#USER peasenpeppers
+
+# run server
 CMD [ "/usr/local/bin/npm","run","serve" ]
 
 
