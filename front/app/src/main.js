@@ -6,10 +6,18 @@ import store from './store'
 import Amplify, * as AmplifyModules from 'aws-amplify';
 import { AmplifyPlugin } from 'aws-amplify-vue';
 import aws_exports from './aws-exports';
+import VueMoment from 'vue-moment'
+const moment = require('moment')
+
+require('moment/locale/nl')
 
 Amplify.configure(aws_exports);
 
 Vue.use(AmplifyPlugin, AmplifyModules);
+
+Vue.use(VueMoment, {
+  moment
+})
 
 Vue.config.productionTip = false
 

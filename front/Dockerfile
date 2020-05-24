@@ -13,7 +13,7 @@ WORKDIR /home/peasandpeppers/app/
 RUN npm install 
 
 # build source
-RUN npm run build
+#RUN npm run build
 
 # set permissions ot new user
 #RUN chown -R peasandpeppers:peasandpeppers /home/peasandpeppers/app

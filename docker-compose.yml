@@ -5,9 +5,5 @@ services:
     build: ./front
     ports:
       - 80:8080
-    environment:
-      VUE_APP_COGNITO_USERPOOL_ID: 'eu-west-1_KQHDXh3Kd'
-      VUE_APP_COGNITO_APP_DOMAIN: 'eu-west-1'
-      VUE_APP_COGNITO_CLIENT_ID: '5ommi3j1g2r0c9uvm3snghchoj'
     volumes:
       - ./front/app/src/:/home/peasandpeppers/app/src/

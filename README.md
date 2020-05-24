@@ -1,5 +1,5 @@
 # PeasEnPeppers
-Webshop voor Ezra Pronk waar ze vegan gerechten verkoopt
+Webshop voor Peas and Peppers waar vegan gerechten verkocht worden. deze gerechten verschillen per dag. het kunnen meerdere gerechten zijn per dag. 
 
 # Amazon web services
 This project uses AWS. 
@@ -8,5 +8,5 @@ This project uses AWS.
     - api gatway for api calls
     - dynamodb for database
     - lambda function for quering database
-    - sns for SMS messages
     - SES for e-mail services
+    - route53 voor dns management

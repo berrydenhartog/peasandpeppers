@@ -9,6 +9,7 @@ $default-padding: $size-base * 3.5;
 /* Default font */
 $family-sans-serif: "Maven Pro", sans-serif;
 $family-primary: $family-sans-serif;
+$title-family: "Century Gothic", Monotype;
 
 /* Base color */
 $base-color: rgb(143,169,156);
@@ -33,5 +34,13 @@ $link: $base-color;
     opacity: 0.85;
     background-color: $base-color !important;
     width: max-content;
+}
+
+#homehero {
+    background-image: url('./../assets/home.jpg');
+}
+
+#homehero > .hero-body {
+    padding: 1rem 1rem !important;
 }
 

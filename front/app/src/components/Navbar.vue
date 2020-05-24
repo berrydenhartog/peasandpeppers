@@ -3,7 +3,7 @@
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link class="navbar-item" :to="{ name: 'Home' }">
-          <img src="@/assets/logo.jpg" alt="Logo">
+          <img src="@/assets/logo.png" alt="Logo">
         </router-link>
         <a role="button" class="navbar-burger" v-on:click="showNav = !showNav" >
           <span aria-hidden="true"></span>

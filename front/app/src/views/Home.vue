@@ -1,17 +1,20 @@
 <template>
   <div class="myhome">
-    <HeroBar title="FRESH MAIL DELIVERY" subtitle="Vegan all the way" :background="require('@/assets/home.jpg')" />
+    <section class="hero is-medium" id="homehero">
+      <div class="hero-body">
+        <figure class="image is-3by1">
+          <img src="@/assets/home2.png">
+        </figure>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HeroBar from '@/components/HeroBar.vue'
 
 export default {
   name: 'Home',
   components: {
-      HeroBar,
   }
 }
 </script>

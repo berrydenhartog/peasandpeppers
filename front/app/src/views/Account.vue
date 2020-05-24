@@ -1,7 +1,11 @@
 <template>
   <div class="myaccount">
-    <HeroBar :title="user.attributes['email']" subtitle="manage uw bestellingen" :background="require('@/assets/account.jpg')" />
-
+    <HeroBar title="Account" subtitle="manage uw bestellingen" :background="require('@/assets/account.jpg')" />
+    
+    Groups: {{user.signInUserSession.accessToken.payload["cognito:groups"]}}
+    email: {{user.attributes['email']}}
+    username: {{user.username}}
+    {{isAdmin}}
   </div>
 </template>
 
@@ -22,13 +26,12 @@ export default {
       ],
     }
   },
-  //async mounted () {
-  //  if (AmplifyStore.state.user) {
-  //  }
-  //},
   computed: {
     user() { 
       return AmplifyStore.state.user
+    },
+    isAdmin() {
+      return AmplifyStore.state.user.signInUserSession.accessToken.payload["cognito:groups"].includes("admin");
     }
   },
   methods: {
