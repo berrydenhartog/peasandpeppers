@@ -60,7 +60,7 @@ export default {
       return true
     },
     checkpassword(){
-      if (!this.password || this.password.length < 8 ) {
+      if (!this.password || this.password.length < 6 ) {
         return true
       }
       return false
@@ -75,7 +75,7 @@ export default {
         this.errors.push('Vul een correct emailadres in.')
       }
 
-      if (this.password < 8) {
+      if (this.password < 6) {
         this.errors.push('Het wachtwoord moet minimaal 8 karakters lang zijn.');
       }
 
@@ -83,7 +83,8 @@ export default {
       if (this.errors.length == 0) {
         this.isLoading = true;
         try {
-          const user = await Auth.signIn(this.email, this.password);
+          const user = await Auth.signIn(this.email, this.password );
+          console.log(user)
           if(user.challengeName ==null) {
             this.$router.push({ name: 'Account'})
           }

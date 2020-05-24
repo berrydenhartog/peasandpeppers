@@ -1,46 +1,98 @@
 <template>    
   <div class="mydag"> 
-    <h3>{{dag | moment("D MMM")}}</h3>
+    <a :name="dag | moment('dddd')"></a>
+    <h3 class="title">{{dag | moment("dddd D MMM")}}</h3>
     <div class="columns">
       <div class="column">
         <div class="card">
-          <div class="card-image">
-            <figure class="image is-square">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-footer">
-            <div class="select">
-              <select>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-              </select>
+          <div class="card-content">
+            <div class="columns">
+              <div class="column">
+                <figure class="image is-16by9">
+                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="column">
+                <h1 class="title">Productnaam</h1>
+                <p>
+                  omschrijving
+                </p>
+                <div class="field">
+                  <div class="control">
+                    <div class="price">
+                      8.59
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class='buttons is-right'>
-              <button class="button is-link">Bestel</button>
+            <div class="field">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select>
+                    <option>Small</option>
+                    <option selected="selected">Medium</option>
+                    <option>Large</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <input class="input" min="1" placeholder="Aantal"  value="1" required type="number"/>
+              </div>
             </div>
           </div>
+          <footer class="card-footer">
+            <button class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
+            <button class="button card-footer-item is-link is-fullwidth">Bestel</button>
+          </footer>
         </div>
       </div>
-      <div class="column">
+           <div class="column">
         <div class="card">
-          <div class="card-image">
-            <figure class="image is-square">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-          </div>
           <div class="card-content">
-            <div class="select">
-              <select>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-              </select>
+            <div class="columns">
+              <div class="column">
+                <figure class="image is-16by9">
+                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="column">
+                <h1 class="title">Productnaam</h1>
+                <p>
+                  omschrijving
+                </p>
+                <div class="field">
+                  <div class="control">
+                    <div class="price">
+                      8.59
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <button class="button is-link is-fullwidth">Bestel</button>
-            <button class="button is-link-dark is-fullwidth">Meer Info</button>
+            <div class="field">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select>
+                    <option>Small</option>
+                    <option selected="selected">Medium</option>
+                    <option>Large</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <input class="input" min="1" placeholder="Aantal"  value="1" required type="number"/>
+              </div>
+            </div>
           </div>
+          <footer class="card-footer">
+            <button class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
+            <button class="button card-footer-item is-link is-fullwidth">Bestel</button>
+          </footer>
         </div>
       </div>
     </div>
@@ -52,7 +104,7 @@
 export default {
   name: 'Week',
   props: {
-    dag: Object,
+    dag: Date,
   },
   mounted: function () { 
     this.$moment.locale('nl')

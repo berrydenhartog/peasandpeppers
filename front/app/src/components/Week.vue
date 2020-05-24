@@ -1,6 +1,15 @@
 <template>    
   <div class="myweek"> 
-    <h2>Het menu van {{startOfWeek | moment("D MMM")}} - {{endOfWeek | moment("D MMM")}}  </h2>
+    <h2 class="title">Het menu van {{startOfWeek | moment("D MMM")}} - {{endOfWeek | moment("D MMM")}}  </h2>
+    <div class="buttons">
+      <a href="#maandag" class="button is-link">Maandag</a>
+      <a href="#dinsdag" class="button is-link">Dinsdag</a>
+      <a href="#woensdag" class="button is-link">Woensdag</a>
+      <a href="#donderdag" class="button is-link">Donderdag</a>
+      <a href="#vrijdag" class="button is-link">Vrijdag</a>
+      <a href="#zaterdag" class="button is-link">Zaterdag</a>
+      <a href="#zondag" class="button is-link">Zondag</a>
+    </div>
     <Dag :dag="maandag"/>
     <Dag :dag="dinsdag"/>
     <Dag :dag="woensdag"/>
