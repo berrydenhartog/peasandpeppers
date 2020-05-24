@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 // eslint-disable-next-line
 import { components, AmplifyEventBus } from 'aws-amplify-vue';
 import Home from '../views/Home.vue'
-import AmplifyStore from '../store/'
+import Store from '../store/'
 
 Vue.use(VueRouter);
 
@@ -12,7 +12,7 @@ let user;
 AmplifyEventBus.$on('authState', async (state) => {
   if (state === 'signedOut'){
     user = null;
-    AmplifyStore.commit('setUser', null);
+    Store.commit('setUser', null);
     router.push({path: '/'})
   } else if (state === 'signedIn') {
     user = await getUser();
@@ -23,12 +23,12 @@ AmplifyEventBus.$on('authState', async (state) => {
 function getUser() {
   return Vue.prototype.$Amplify.Auth.currentAuthenticatedUser().then((data) => {
     if (data && data.signInUserSession) {
-      AmplifyStore.commit('setUser', data);
+      Store.commit('setUser', data);
       return data;
     } 
   // eslint-disable-next-line
   }).catch((e) => {
-    AmplifyStore.commit('setUser', null);
+    Store.commit('setUser', null);
     return null
   });
 }

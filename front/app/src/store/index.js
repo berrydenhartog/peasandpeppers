@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null
+    user: null,
+    producten: []
   },
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    addProduct(state, product) {
+      state.producten.push(product)
     },
   },
   actions: {

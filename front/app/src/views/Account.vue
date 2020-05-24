@@ -1,18 +1,35 @@
 <template>
   <div class="myaccount">
     <HeroBar title="Account" subtitle="manage uw bestellingen" :background="require('@/assets/account.jpg')" />
-    
-    Groups: {{user.signInUserSession.accessToken.payload["cognito:groups"]}}
-    email: {{user.attributes['email']}}
-    username: {{user.username}}
-    {{isAdmin}}
+    <section>
+      <div class="container">
+        <div class="field">
+          <label class="label">Naam</label>
+          <div class="control">
+            <input class="input" type="text" :value="user.username" readonly>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">E-mail</label>
+          <div class="control">
+            <input class="input" type="text" :value="user.attributes['email']" readonly>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Admin</label>
+          <div class="control">
+            <input class="input" type="text" :value="isAdmin" readonly>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HeroBar from '@/components/HeroBar.vue'
-import AmplifyStore from '@/store/'
+import Store from '@/store/'
 
 export default {
   name: 'Account',
@@ -28,15 +45,18 @@ export default {
   },
   computed: {
     user() { 
-      return AmplifyStore.state.user
+      return Store.state.user
     },
     isAdmin() {
-      return AmplifyStore.state.user.signInUserSession.accessToken.payload["cognito:groups"].includes("admin");
+      if (Store.state.user.signInUserSession.accessToken.payload["cognito:groups"]) {
+        return Store.state.user.signInUserSession.accessToken.payload["cognito:groups"].includes("admin");
+      }
+      return false
     }
   },
   methods: {
     save() {
-      const cognitoUser = AmplifyStore.state.user;
+      const cognitoUser = Store.state.user;
       if (!this.user || !cognitoUser) { return }
       this.$Amplify.Auth.updateUserAttributes(cognitoUser, this.user).then((res) => {
         console.log(res)

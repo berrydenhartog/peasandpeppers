@@ -44,12 +44,12 @@
             </div>
           </div>
           <footer class="card-footer">
-            <button class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
-            <button class="button card-footer-item is-link is-fullwidth">Bestel</button>
+            <button v-on:click="meerinfo" class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
+            <button v-on:click="bestel" class="button card-footer-item is-link is-fullwidth">Bestel</button>
           </footer>
         </div>
       </div>
-           <div class="column">
+      <div class="column">
         <div class="card">
           <div class="card-content">
             <div class="columns">
@@ -90,8 +90,8 @@
             </div>
           </div>
           <footer class="card-footer">
-            <button class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
-            <button class="button card-footer-item is-link is-fullwidth">Bestel</button>
+            <button v-on:click="meerinfo" class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
+            <button v-on:click="bestel" class="button card-footer-item is-link is-fullwidth">Bestel</button>
           </footer>
         </div>
       </div>
@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import Store from '../store/'
 
 export default {
   name: 'Week',
@@ -115,6 +116,22 @@ export default {
     }
   },
   methods: {
+    meerinfo: function (event) {
+      console.log("meerinfo",event)
+
+    },
+    bestel: function (event) {
+      const grote = event.target.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].childNodes[0].childNodes[0].value 
+      const aantal = event.target.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].childNodes[0].value
+      console.log("aantal",aantal,grote)
+      const origineel = event.target.innerText
+      event.target.innerText = aantal + " " + grote + " toegevoegd!"
+      const that = event.target
+      setTimeout(() => that.innerText = origineel, 1500);
+      Store.commit('addProduct', aantal + " " + grote);
+
+
+    }
   }
 }
 </script>
