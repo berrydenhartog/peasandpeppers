@@ -3,7 +3,7 @@
     <div v-bind:class="{ 'is-hidden' : closed }" class="container is-fullhd">
       <div class="notification is-info has-text-centered">
         <button class="delete"  @click="close"></button>
-        Gratis levering door heel NL vanaf €45 | voor 23:59 besteld = volgende werkdag geleverd
+        {{message}}
       </div>
     </div>
   </mynotification>
@@ -12,6 +12,9 @@
 <script>
 export default {
   name: 'Notification',
+  props: {
+    message: String,
+  },
   data() {
     return {
       closed: false

@@ -16,6 +16,10 @@ export default new Vuex.Store({
       state.producten.push(product)
       localStorage.setItem('products', JSON.stringify(state.producten));
     },
+    deleteProduct(state, productnr) {
+      state.producten.splice(productnr,1)
+      localStorage.setItem('products', JSON.stringify(state.producten));
+    },
     initialiseProducts(state){
       if(localStorage.getItem('products')) {
         state.producten = JSON.parse(localStorage.getItem('products'))
