@@ -1,7 +1,9 @@
 @charset "utf-8";
 
 @import 'theme-default.scss';
+@import '~bulma/bulma.sass';
+
+
+@import 'theme.scss';
 @import 'nav-bar.scss';
 @import 'hero-bar.scss';
-
-@import '~bulma/bulma.sass';

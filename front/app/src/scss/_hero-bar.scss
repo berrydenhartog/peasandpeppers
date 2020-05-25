@@ -9,3 +9,11 @@ section.hero {
         color:$white; 
     }
 }
+
+#homehero {
+    background-image: url('./../assets/home.jpg');
+}
+
+#homehero > .hero-body {
+    padding: 1rem 1rem !important;
+}

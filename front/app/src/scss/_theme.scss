@@ -1,0 +1,23 @@
+.mainpadding {
+    padding-top: $default-padding;
+    padding-bottom: $default-padding;
+    @include until($tablet) {
+        padding-left: $default-padding;
+        padding-right: $default-padding;
+    }
+
+}
+
+.box {
+    opacity: 0.85;
+    background-color: $base-color !important;
+    width: max-content;
+}
+
+.price:before {
+    content: "€ "; 
+
+}
+.mydag > h3 {
+    padding-top: $default-padding;
+}

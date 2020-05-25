@@ -1,4 +1,6 @@
 @import 'bulma/sass/utilities/initial-variables.sass';
+@import "bulma/sass/utilities/functions.sass";
+
 
 
 // bulma colors
@@ -26,30 +28,8 @@ $footer-background-color: $white;
 $link: $base-color;
 //$link-visited: $purple;
 
-.mainpadding {
-    padding-top: $default-padding;
-    padding-bottom: $default-padding;
-    padding-left: $default-padding;
-    padding-right: $default-padding;
-}
-.box {
-    opacity: 0.85;
-    background-color: $base-color !important;
-    width: max-content;
-}
 
-#homehero {
-    background-image: url('./../assets/home.jpg');
-}
-
-#homehero > .hero-body {
-    padding: 1rem 1rem !important;
-}
-
-.price:before {
-    content: "€ "; 
-
-}
-.mydag > h3 {
-    padding-top: $default-padding;
-}
+@import 'bulma/sass/utilities/derived-variables.sass';
+@import "bulma/sass/utilities/animations.sass";
+@import "bulma/sass/utilities/mixins.sass";
+@import "bulma/sass/utilities/controls.sass";

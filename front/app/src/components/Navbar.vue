@@ -65,7 +65,8 @@
           </div> 
           <router-link class="navbar-item" :to="{ name: 'Winkelwagen' }">
             <span class="icon is-large">
-              <i class = "mdi mdi-24px mdi-cart-outline"></i> 
+              <i v-if="producten.length" class = "mdi mdi-24px mdi-cart-arrow-right"></i> 
+              <i v-if="!producten.length" class = "mdi mdi-24px mdi-cart-outline"></i>
             </span>
           </router-link>
         </div>
@@ -75,7 +76,7 @@
 </template>
 
 <script>
-import AmplifyStore from '../store/'
+import Store from '../store/'
 // eslint-disable-next-line
 import { components, AmplifyEventBus } from 'aws-amplify-vue'
 
@@ -84,8 +85,11 @@ export default {
   props: ['showNav'],
   computed: {
     user() { 
-      return AmplifyStore.state.user
-    }
+      return Store.state.user
+    },
+    producten() { 
+      return Store.state.producten
+    },
   },
   methods: {
     async logout() {
