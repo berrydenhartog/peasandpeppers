@@ -14,7 +14,13 @@ export default new Vuex.Store({
     },
     addProduct(state, product) {
       state.producten.push(product)
+      localStorage.setItem('products', JSON.stringify(state.producten));
     },
+    initialiseProducts(state){
+      if(localStorage.getItem('products')) {
+        state.producten = JSON.parse(localStorage.getItem('products'))
+      }
+    }
   },
   actions: {
   },

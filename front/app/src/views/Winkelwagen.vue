@@ -2,6 +2,7 @@
   <div class="mywinkelwagen">
     <section>
       <div class="container mainpadding">
+        <h1 class="title">Uw Winkelwagen</h1>
         <table class="table">
           <thead>
             <tr>

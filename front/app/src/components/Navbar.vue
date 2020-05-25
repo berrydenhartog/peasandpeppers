@@ -24,8 +24,8 @@
               </router-link>
             </div>
           </div>  
-          <div class="navbar-item">
-            <router-link class="navbar-item is-uppercase" :to="{ name: 'Taarten'}">
+          <div class="navbar-item has-dropdown  is-hoverable">
+            <router-link class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Taarten'}">
               Taarten
             </router-link>
           </div>

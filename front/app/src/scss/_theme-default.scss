@@ -29,6 +29,8 @@ $link: $base-color;
 .mainpadding {
     padding-top: $default-padding;
     padding-bottom: $default-padding;
+    padding-left: $default-padding;
+    padding-right: $default-padding;
 }
 .box {
     opacity: 0.85;

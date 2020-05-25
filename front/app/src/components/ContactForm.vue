@@ -57,6 +57,9 @@
 </template>
 
 <script>
+
+import EmailRepository from "../repository/EmailRepository";
+
 export default {
   name: 'ContactForm',
   props: {
@@ -96,7 +99,7 @@ export default {
     },
   },
   methods: {
-    submitForm: function () {
+    submitForm: async function() {
       this.errors = [];
 
 
@@ -114,11 +117,19 @@ export default {
 
       if (this.errors.length == 0) {
         this.isLoading = true;
-        this.activeModal = true;
-        this.email=null;
-        this.naam=null;
-        this.bericht=null;
-        this.isLoading = false;
+        try {
+          const { data } = await EmailRepository.create("hallo")
+          console.log(data)
+
+          this.email=null;
+          this.naam=null;
+          this.bericht=null;
+          this.isLoading = false;
+          this.activeModal = true;
+        } catch (error) {
+          this.errors.push(error.message);
+          this.isLoading = false;
+        }
       }
 
     },

@@ -8,6 +8,7 @@ const awsmobile = {
     "aws_user_pools_id": "eu-west-1_8j6JxTtRr",
     "aws_user_pools_web_client_id": "6su5htpaievnfnnq2ii5f2a2b1",
     "oauth": {}
+    //aws_api_vokeUrl: 'https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod'
 };
 
 
