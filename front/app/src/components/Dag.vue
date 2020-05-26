@@ -2,54 +2,55 @@
   <div class="mydag"> 
     <a :name="dag | moment('dddd')"></a>
     <h3 class="title">{{dag | moment("dddd D MMM")}}</h3>
-    <div class="columns">
-      <div v-for="gerecht in gerechten" :key="gerecht.index" class="column">
-        <div class="card">
-          <div class="card-content">
-            <div class="columns">
-              <div class="column">
-                <figure class="image is-16by9">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="column">
-                <h1 class="title">{{gerecht.naam}}</h1>
-                <p>
-                  {{gerecht.omschrijving}}
-                </p>
-                <div class="field">
-                  <div class="control">
-                    <div class="price">
-                      {{gerecht.prijzen}}
+    <Notification v-if="!gerechten.length" message="Geen gerechten beschikbaar" />
+    <div v-if="gerechten.length">
+      <div v-for="cgerechten in chunkedGerechten" :key="cgerechten.index" class="columns">   
+        <div v-for="gerecht in cgerechten" :key="gerecht.index" class="column is-half">
+          <div class="card">
+            <div class="card-content">
+              <div class="columns">
+                <div class="column">
+                  <figure class="image is-16by9">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="column">
+                  <h1 class="title">{{gerecht.naam}}</h1>
+                  <p>
+                    {{gerecht.omschrijving}}
+                  </p>
+                  <div class="field">
+                    <div class="control">
+                      <div v-show="index == gerecht.default" :priceid="index" class="price" v-for="(prijs,index) in gerecht.prijzen" :key="prijs.index">
+                        {{pricetofloat(prijs)}} / stuk
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <div class="select is-fullwidth">
-                  <select>
-                    <option v-for="grote in gerecht.grotes" :key="grote.index">
-                      {{grote}}
-                    </option>
-                  </select>
+              <div class="field">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select @change="changeSize($event)">
+                      <option :value="index" v-for="(grote,index) in gerecht.grotes" :key="grote.index" :selected="index == gerecht.default">
+                        {{grote}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input class="input" min="1" placeholder="Aantal"  value="1" required type="number"/>
                 </div>
               </div>
             </div>
-            <div class="field">
-              <div class="control">
-                <input class="input" min="1" placeholder="Aantal"  value="1" required type="number"/>
-              </div>
-            </div>
+
+            <footer class="card-footer">
+              <button v-on:click="meerinfo" class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
+              <button v-on:click="bestel" class="button card-footer-item is-link is-fullwidth">Bestel</button>
+            </footer>
           </div>
-
-
-
-          <footer class="card-footer">
-            <button v-on:click="meerinfo" class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
-            <button v-on:click="bestel" class="button card-footer-item is-link is-fullwidth">Bestel</button>
-          </footer>
         </div>
       </div>
     </div>
@@ -58,12 +59,16 @@
 
 <script>
 import Store from '../store/'
+import Notification from '@/components/Notification.vue'
 
 export default {
   name: 'Week',
   props: {
     dag: Date,
     gerechten: Array,
+  },
+  components: {
+    Notification,
   },
   mounted: function () { 
     this.$moment.locale('nl')
@@ -72,7 +77,31 @@ export default {
     return {
     }
   },
+  computed: {
+    chunkedGerechten () {
+      const size=2
+      return Array.from({ length: Math.ceil(this.gerechten.length / size) }, (v, i) =>
+          this.gerechten.slice(i * size, i * size + size)
+        );
+    },
+  },
   methods: {
+    pricetofloat (myprice) {
+      let tmp = myprice /100
+      return tmp.toFixed(2)
+    },
+    changeSize: function(event){
+      const sizeindex = event.target.value
+      const prices=event.target.parentNode.parentNode.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].childNodes[0].childNodes
+      for(var i = 0; i < prices.length; i++){
+        console.log(prices[i])
+        if ( prices[i].getAttribute('priceid') == sizeindex) {
+          prices[i].style.display = 'block';
+        } else {
+          prices[i].style.display = 'none';
+        }
+      }
+    },
     meerinfo: function () {
     },
     bestel: function (event) {
@@ -85,8 +114,6 @@ export default {
       event.target.innerText = aantal + " " + grote + " toegevoegd!"
       const that = event.target
       setTimeout(() => that.innerText = origineel, 1500);
-      
-
 
     }
   }

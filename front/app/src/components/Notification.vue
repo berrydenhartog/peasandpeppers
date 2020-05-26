@@ -1,12 +1,12 @@
 <template>    
-  <mynotification>
+  <div class="mynotification">
     <div v-bind:class="{ 'is-hidden' : closed }" class="container is-fullhd">
-      <div class="notification is-info has-text-centered">
+      <div class="notification has-text-centered" :class="myclass">
         <button class="delete"  @click="close"></button>
         {{message}}
       </div>
     </div>
-  </mynotification>
+  </div>
 </template>
 
 <script>
@@ -14,6 +14,10 @@ export default {
   name: 'Notification',
   props: {
     message: String,
+    myclass: {
+      type: String,
+      default: ''
+    },
   },
   data() {
     return {
