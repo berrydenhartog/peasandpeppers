@@ -48,7 +48,7 @@
               <button v-on:click="activeModal = false" class="delete" aria-label="delete"></button>
             </div>
             <div class="message-body">
-              We hebben uw bericht ontvangen en zullen zo spoedig mogelijk reageren. 
+              {{modalbericht}}
             </div>
           </article>
         </div>
@@ -75,6 +75,7 @@ export default {
       showError: false,
       errors: [],
       activeModal: false,
+      modalbericht: '',
     }
   },
   computed: {
@@ -118,14 +119,23 @@ export default {
       if (this.errors.length == 0) {
         this.isLoading = true;
         try {
-          const { data } = await EmailRepository.create("hallo")
-          console.log(data)
-
-          this.email=null;
-          this.naam=null;
-          this.bericht=null;
-          this.isLoading = false;
+          const payload= {
+            'email':this.email,
+            'naam':this.naam,
+            'bericht':this.bericht
+          }
+          const { data } = await EmailRepository.create(payload)
+          if (data.statusCode == 200) {
+            this.email=null;
+            this.naam=null;
+            this.bericht=null;
+            this.modalbericht = 'We hebben uw bericht ontvangen en zullen zo spoedig mogelijk reageren. '
+          } else {
+            this.modalbericht = 'Sorry, Er is een technische storing, we kunnen uw mail niet afleveren. '
+          }
           this.activeModal = true;
+          this.isLoading = false;
+          
         } catch (error) {
           this.errors.push(error.message);
           this.isLoading = false;

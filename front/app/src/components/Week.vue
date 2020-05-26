@@ -2,13 +2,13 @@
   <div class="myweek"> 
     <h2 class="title">Het menu van {{startOfWeek | moment("D MMM")}} - {{endOfWeek | moment("D MMM")}}  </h2>
     <div class="buttons">
-      <a href="#maandag" class="button is-link">Maandag</a>
-      <a href="#dinsdag" class="button is-link">Dinsdag</a>
-      <a href="#woensdag" class="button is-link">Woensdag</a>
-      <a href="#donderdag" class="button is-link">Donderdag</a>
-      <a href="#vrijdag" class="button is-link">Vrijdag</a>
-      <a href="#zaterdag" class="button is-link">Zaterdag</a>
-      <a href="#zondag" class="button is-link">Zondag</a>
+      <a href="#maandag" :disabled="!getgerecht('maandag').length" class="button is-link">Maandag</a>
+      <a href="#dinsdag" :disabled="!getgerecht('dinsdag').length" class="button is-link">Dinsdag</a>
+      <a href="#woensdag" :disabled="!getgerecht('woensdag').length" class="button is-link">Woensdag</a>
+      <a href="#donderdag" :disabled="!getgerecht('donderdag').length" class="button is-link">Donderdag</a>
+      <a href="#vrijdag" :disabled="!getgerecht('vrijdag').length" class="button is-link">Vrijdag</a>
+      <a href="#zaterdag" :disabled="!getgerecht('zaterdag').length" class="button is-link">Zaterdag</a>
+      <a href="#zondag" :disabled="!getgerecht('zondag').length" class="button is-link">Zondag</a>
     </div>
     <Dag :gerechten="getgerecht('maandag')" :dag="maandag"/>
     <Dag :gerechten="getgerecht('dinsdag')" :dag="dinsdag"/>
@@ -39,7 +39,6 @@ export default {
   },
   watch: {
     week: function () {
-      console.log("watchchanges")
       this.updatedate()
     }
   },
@@ -59,7 +58,7 @@ export default {
   },
   methods: {
     getgerecht(dag){
-      if (!this.weekMenu || !this.weekMenu.Item[dag] ) {
+      if (!this.weekMenu || !this.weekMenu.Item || !this.weekMenu.Item[dag] ) {
         return []
       }
       return this.weekMenu.Item[dag]
@@ -81,7 +80,7 @@ export default {
       this.zaterdag= startOfWeek.add(1,"days").toDate()
       this.zondag= startOfWeek.add(1,"days").toDate()
 
-      const { data } = await GerechtenRepository.get("week21")
+      const { data } = await GerechtenRepository.get("week"+startOfWeek.format('w'))
       this.weekMenu = data
     }
   }

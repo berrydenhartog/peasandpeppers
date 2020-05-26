@@ -16,10 +16,10 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link is-uppercase">Maaltijden</a>
             <div class="navbar-dropdown">
-              <router-link class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'deze-week' } }">
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'deze-week' } }">
                 Deze Week
               </router-link>
-              <router-link class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'volgende-week' } }">
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'volgende-week' } }">
                 Volgende Week
               </router-link>
             </div>
@@ -32,13 +32,13 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link is-uppercase">Over Peas &amp; Peppers</a>
             <div class="navbar-dropdown">
-              <router-link class="navbar-item is-uppercase" :to="{ name: 'Ezra' }">
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Ezra' }">
                 Ezra
               </router-link>
-              <router-link class="navbar-item is-uppercase" :to="{ name: 'Contact' }">
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Contact' }">
                 Contact
               </router-link>
-              <router-link class="navbar-item is-uppercase" :to="{ name: 'FAQ' }">
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'FAQ' }">
                 FAQ
               </router-link>
             </div>
@@ -52,10 +52,10 @@
               </span>
             </router-link>
             <div class="navbar-dropdown">
-              <router-link class="navbar-item is-uppercase" :disabled="!user" :to="{ name: 'Account'}">
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :disabled="!user" :to="{ name: 'Account'}">
                 Bestellingen
               </router-link>
-              <router-link v-if="!user" class="navbar-item is-uppercase" :to="{ name: 'Login' }">
+              <router-link v-on:click.native="toggleisactive" v-if="!user" class="navbar-item is-uppercase" :to="{ name: 'Login' }">
                 Login
               </router-link>
               <a v-if="user" @click="logout" class="navbar-item is-uppercase">
@@ -82,7 +82,11 @@ import { components, AmplifyEventBus } from 'aws-amplify-vue'
 
 export default {
   name: 'Navbar',
-  props: ['showNav'],
+  data() {
+    return {
+      showNav: false,
+    }
+  },
   computed: {
     user() { 
       return Store.state.user
@@ -92,6 +96,9 @@ export default {
     },
   },
   methods: {
+    toggleisactive(event) {
+      event.target.blur()
+    },
     async logout() {
       // eslint-disable-next-line
       this.$Amplify.Auth.signOut()
