@@ -2,10 +2,7 @@ import Repository from '@/repository/Repository';
 const resource = '/gerechten';
 
 export default {
-    get() {
-        return Repository.get(`${resource}`);
-    },
-    getPost(id) {
+    get(id) {
         return Repository.get(`${resource}/${id}`);
     },
     create(payload) {

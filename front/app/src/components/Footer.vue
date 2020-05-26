@@ -70,6 +70,9 @@
         <p>
           &copy; <strong> Peas  &#38; Peppers</strong>
         </p>
+        <p>
+          Made by <a href="https://sugarfly.nl" target="_blank">SugarFly</a>
+        </p>
       </div>
     </footer>
   </div>

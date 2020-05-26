@@ -10,19 +10,20 @@
       <a href="#zaterdag" class="button is-link">Zaterdag</a>
       <a href="#zondag" class="button is-link">Zondag</a>
     </div>
-    <Dag :dag="maandag"/>
-    <Dag :dag="dinsdag"/>
-    <Dag :dag="woensdag"/>
-    <Dag :dag="donderdag"/>
-    <Dag :dag="vrijdag"/>
-    <Dag :dag="zaterdag"/>
-    <Dag :dag="zondag"/>
+    <Dag :gerechten="getgerecht('maandag')" :dag="maandag"/>
+    <Dag :gerechten="getgerecht('dinsdag')" :dag="dinsdag"/>
+    <Dag :gerechten="getgerecht('woensdag')" :dag="woensdag"/>
+    <Dag :gerechten="getgerecht('donderdag')" :dag="donderdag"/>
+    <Dag :gerechten="getgerecht('vrijdag')" :dag="vrijdag"/>
+    <Dag :gerechten="getgerecht('zaterdag')" :dag="zaterdag"/>
+    <Dag :gerechten="getgerecht('zondag')" :dag="zondag"/>
   </div>
 </template>
 
 <script>
 import Dag from '@/components/Dag.vue'
 import moment from 'moment'
+import GerechtenRepository from "../repository/GerechtenRepository";
 
 export default {
   name: 'Week',
@@ -53,11 +54,17 @@ export default {
       vrijdag: null,
       zaterdag: null,
       zondag: null,
-      weekMenu: []
+      weekMenu: null
     }
   },
   methods: {
-    updatedate: function () {
+    getgerecht(dag){
+      if (!this.weekMenu || !this.weekMenu.Item[dag] ) {
+        return []
+      }
+      return this.weekMenu.Item[dag]
+    },
+    updatedate: async function () {
       var startOfWeek = moment().startOf('week');
       var endOfWeek = moment().endOf('week');
       if(this.week === 'VOLGENDE WEEK') {
@@ -73,6 +80,9 @@ export default {
       this.vrijdag= startOfWeek.add(1,"days").toDate()
       this.zaterdag= startOfWeek.add(1,"days").toDate()
       this.zondag= startOfWeek.add(1,"days").toDate()
+
+      const { data } = await GerechtenRepository.get("week21")
+      this.weekMenu = data
     }
   }
 }

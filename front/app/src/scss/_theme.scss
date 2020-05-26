@@ -2,8 +2,8 @@
     padding-top: $default-padding;
     padding-bottom: $default-padding;
     @include until($tablet) {
-        padding-left: $default-padding;
-        padding-right: $default-padding;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
 }
