@@ -4,8 +4,8 @@
     <h3 class="title">{{dag | moment("dddd D MMM")}}</h3>
     <Notification v-if="!gerechten.length" message="Geen gerechten beschikbaar" />
     <div v-if="gerechten.length">
-      <div v-for="cgerechten in chunkedGerechten" :key="cgerechten.index" class="columns">   
-        <div v-for="gerecht in cgerechten" :key="gerecht.index" class="column is-half">
+      <div v-for="(cgerechten , cindex) in chunkedGerechten" :key="cgerechten.index" class="columns">   
+        <div v-for="(gerecht, index) in cgerechten" :key="gerecht.index" class="column is-half">
           <div class="card">
             <div class="card-content">
               <div class="columns">
@@ -49,6 +49,8 @@
             <footer class="card-footer">
               <button v-on:click="meerinfo" class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
               <button v-on:click="bestel" class="button card-footer-item is-link is-fullwidth">Bestel</button>
+              <input type="hidden" name="dag" :value="dag | moment('dddd')">
+              <input type="hidden" name="volgnummer" :value="cindex*2+index">
             </footer>
           </div>
         </div>
@@ -60,6 +62,7 @@
 <script>
 import Store from '../store/'
 import Notification from '@/components/Notification.vue'
+import moment from 'moment'
 
 export default {
   name: 'Week',
@@ -94,7 +97,6 @@ export default {
       const sizeindex = event.target.value
       const prices=event.target.parentNode.parentNode.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].childNodes[0].childNodes
       for(var i = 0; i < prices.length; i++){
-        console.log(prices[i])
         if ( prices[i].getAttribute('priceid') == sizeindex) {
           prices[i].style.display = 'block';
         } else {
@@ -105,10 +107,26 @@ export default {
     meerinfo: function () {
     },
     bestel: function (event) {
-      const grote = event.target.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].childNodes[0].childNodes[0].value 
+      const select = event.target.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].childNodes[0].childNodes[0] 
       const aantal = event.target.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].childNodes[0].value
-      
-      Store.commit('addProduct', aantal + " " + grote);
+      const grote = select.childNodes[select.value].innerText
+      const grotevalue = select.childNodes[select.value].value
+      var startOfWeek = moment().startOf('week');
+      if(this.$route.params.naam === 'volgende-week') {
+        startOfWeek = startOfWeek.add(7,"days")
+      }
+      let weeknr = startOfWeek.week()
+      let dag = event.target.parentNode.childNodes[2].value
+      let volgnummer = event.target.parentNode.childNodes[3].value
+
+      const product= {
+        'weeknr':weeknr, 
+        'dag':dag, 
+        'volgnummer':volgnummer, 
+        'grotevalue':grotevalue, 
+        'aantal':Number(aantal)
+      }
+      Store.commit('addProduct', product );
       
       const origineel = event.target.innerText
       event.target.innerText = aantal + " " + grote + " toegevoegd!"
