@@ -111,27 +111,45 @@ export default {
       const aantal = event.target.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].childNodes[0].value
       const grote = select.childNodes[select.value].innerText
       const grotevalue = select.childNodes[select.value].value
-      var startOfWeek = moment().startOf('week');
+      let startOfWeek = moment().startOf('week');
       if(this.$route.params.naam === 'volgende-week') {
         startOfWeek = startOfWeek.add(7,"days")
       }
-      let weeknr = startOfWeek.week()
-      let dag = event.target.parentNode.childNodes[2].value
-      let volgnummer = event.target.parentNode.childNodes[3].value
+      const weeknr = startOfWeek.week()
+      const dag = event.target.parentNode.childNodes[2].value
+      const volgnummer = event.target.parentNode.childNodes[3].value
+      const naam = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[0].innerText
+      let prijs = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[2].innerText
+      prijs = Number(prijs.split("/")[0])*100
+      console.log(prijs,naam)
 
-      const product= {
-        'weeknr':weeknr, 
-        'dag':dag, 
-        'volgnummer':volgnummer, 
-        'grotevalue':grotevalue, 
-        'aantal':Number(aantal)
+      let orderdate = moment().day(dag).week(weeknr);
+      let minorderdate = moment().set({"hour": 23, "minute": 59});
+
+      if(orderdate < minorderdate) {
+        const origineel = event.target.innerText
+        event.target.innerText = "Te laat! kan niet meer besteld worden"
+        const that = event.target
+        setTimeout(() => that.innerText = origineel, 1500);
+
+      } else {
+        const product= {
+          'weeknr':weeknr, 
+          'dag':dag, 
+          'volgnummer':volgnummer, 
+          'grotevalue':grotevalue, 
+          'grote':grote,
+          'aantal':Number(aantal),
+          'prijs':prijs,
+          'naam':naam,
+        }
+        Store.commit('addProduct', product );
+
+        const origineel = event.target.innerText
+        event.target.innerText = aantal + " " + grote + " toegevoegd!"
+        const that = event.target
+        setTimeout(() => that.innerText = origineel, 1500);
       }
-      Store.commit('addProduct', product );
-      
-      const origineel = event.target.innerText
-      event.target.innerText = aantal + " " + grote + " toegevoegd!"
-      const that = event.target
-      setTimeout(() => that.innerText = origineel, 1500);
 
     }
   }
