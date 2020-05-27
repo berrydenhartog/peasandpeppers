@@ -121,7 +121,6 @@ export default {
       const naam = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[0].innerText
       let prijs = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[2].innerText
       prijs = Number(prijs.split("/")[0])*100
-      console.log(prijs,naam)
 
       let orderdate = moment().day(dag).week(weeknr);
       let minorderdate = moment().set({"hour": 23, "minute": 59});

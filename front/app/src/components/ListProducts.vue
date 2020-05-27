@@ -1,5 +1,6 @@
 <template>    
   <div class="mylistproducts">  
+    <div class="table-container">
        <table class="table">
           <thead>
             <tr>
@@ -30,7 +31,7 @@
               <th><abbr title="Week"></abbr></th>
               <th><abbr title="Dag"></abbr></th>
               <th><abbr title="Position"></abbr></th>
-              <th><abbr title="Grote">Grote</abbr></th>
+              <th><abbr title="Grote"></abbr></th>
               <th><abbr title="Aantal"></abbr></th>
               <th><abbr title="Prijs"></abbr></th>
               <th class="price"><abbr title="Totaal">{{TotalPrice}}</abbr></th>
@@ -43,6 +44,7 @@
             <li v-for="error in errors" :key="error">{{ error }}</li>
           </ul>
         </div>
+    </div>
   </div>
 </template> 
 

@@ -1,6 +1,6 @@
 <template>
   <div class="mytaart">
-    <HeroBar title="Heerlijke taarten"  :background="require('@/assets/taarten.jpg')" />
+    <HeroBar title="Taarten" :background="require('@/assets/taarten.jpg')" />
   </div>
 </template>
 
