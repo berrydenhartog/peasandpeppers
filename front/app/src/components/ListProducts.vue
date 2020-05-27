@@ -15,7 +15,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-bind:class="{ 'notification is-danger' : checkorderdate(product.dag,product.weeknr) }" v-for="(product, index) in producten" :key="product.index">
+            <tr v-bind:class="{ 'notification is-danger' : checkorderdate(product.weeknr) }" v-for="(product, index) in producten" :key="product.index">
               <th>{{product.weeknr}}</th>
               <th>{{product.dag}}</th>
               <th>{{product.naam}}</th>
@@ -83,18 +83,25 @@ export default {
     checkerrors(){
       this.errors = [];
       for (let i = 0; i < Store.state.producten.length; i++) {
-        let orderdate = moment().day(Store.state.producten[i].dag).week(Store.state.producten[i].weeknr);
-        let minorderdate = moment().set({"hour": 23, "minute": 59});
-        if (orderdate < minorderdate) {
+        let minorderdate = moment().set({"day":"donderdag","hour": 23, "minute": 59});
+        let huidigetijd=moment();
+        let weeknrcheck = moment().startOf('week').add(7,"days").week()
+
+        if (huidigetijd > minorderdate && Store.state.producten[i].weeknr == weeknrcheck) {
           this.errors.push(Store.state.producten[i].naam+" ("+Store.state.producten[i].grote+") van "+Store.state.producten[i].dag+" week "+Store.state.producten[i].weeknr+" kan niet meer besteld worden. verwijder deze uit uw Winkelmandje")
         }
       }
     },
-    checkorderdate (dag,weeknr) {
+    checkorderdate (weeknr) {
 
-      let orderdate = moment().day(dag).week(weeknr);
-      let minorderdate = moment().set({"hour": 23, "minute": 59});
-      return orderdate < minorderdate
+      let minorderdate = moment().set({"day":"donderdag","hour": 23, "minute": 59});
+      let huidigetijd=moment();
+      let weeknrcheck = moment().startOf('week').add(7,"days").week()
+
+      if (huidigetijd > minorderdate && weeknr == weeknrcheck) {
+        return true
+      }
+      return false
     },
     pricetofloat (myprice) {
       let tmp = myprice /100

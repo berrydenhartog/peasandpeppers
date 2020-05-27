@@ -11,7 +11,7 @@
               <div class="columns">
                 <div class="column">
                   <figure class="image is-16by9">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img :src="gerecht.image" alt="image">
                   </figure>
                 </div>
                 <div class="column">
@@ -111,8 +111,8 @@ export default {
       const aantal = event.target.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].childNodes[0].value
       const grote = select.childNodes[select.value].innerText
       const grotevalue = select.childNodes[select.value].value
-      let startOfWeek = moment().startOf('week');
-      if(this.$route.params.naam === 'volgende-week') {
+      let startOfWeek = moment().startOf('week').add(7,"days");
+      if(this.$route.params.naam === 'over-2-weken') {
         startOfWeek = startOfWeek.add(7,"days")
       }
       const weeknr = startOfWeek.week()
@@ -122,12 +122,13 @@ export default {
       let prijs = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[2].innerText
       prijs = Number(prijs.split("/")[0])*100
 
-      let orderdate = moment().day(dag).week(weeknr);
-      let minorderdate = moment().set({"hour": 23, "minute": 59});
+      let huidigetijd=moment();
+      let minorderdate = moment().set({"day":"donderdag","hour": 23, "minute": 59});
 
-      if(orderdate < minorderdate) {
+
+      if(huidigetijd > minorderdate && this.$route.params.naam === 'deze-week') {
         const origineel = event.target.innerText
-        event.target.innerText = "Te laat! kan niet meer besteld worden"
+        event.target.innerText = "Te laat! bestellingen moeten voor donderdag 23:59 binnen zijn."
         const that = event.target
         setTimeout(() => that.innerText = origineel, 1500);
 

@@ -24,7 +24,7 @@ export default {
     // a computed getter
     mainTitle: function () {
       // `this` points to the vm instance
-      return this.$route.params.naam.replace("-", " ").toUpperCase();
+      return this.$route.params.naam.replace(/-/g, " ").toUpperCase();
     }
   }
 }

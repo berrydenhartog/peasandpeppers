@@ -16,16 +16,16 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link is-uppercase">Maaltijden</a>
             <div class="navbar-dropdown">
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'deze-week' } }">
-                Deze Week
-              </router-link>
               <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'volgende-week' } }">
-                Volgende Week
+                Volgende week
+              </router-link>
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'over-2-weken' } }">
+                Over 2 weken
               </router-link>
             </div>
           </div>  
           <div class="navbar-item has-dropdown  is-hoverable">
-            <router-link class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Taarten'}">
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Taarten'}">
               Taarten
             </router-link>
           </div>
@@ -63,7 +63,7 @@
               </a>
             </div>
           </div> 
-          <router-link class="navbar-item" :to="{ name: 'Winkelwagen' }">
+          <router-link v-on:click.native="toggleisactive" class="navbar-item" :to="{ name: 'Winkelwagen' }">
             <span class="icon is-large">
               <i v-if="producten.length" class = "mdi mdi-24px mdi-cart-arrow-right"></i> 
               <i v-if="!producten.length" class = "mdi mdi-24px mdi-cart-outline"></i>

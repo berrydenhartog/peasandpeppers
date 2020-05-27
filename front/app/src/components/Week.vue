@@ -64,9 +64,10 @@ export default {
       return this.weekMenu.Item[dag]
     },
     updatedate: async function () {
-      var startOfWeek = moment().startOf('week');
-      var endOfWeek = moment().endOf('week');
-      if(this.week === 'VOLGENDE WEEK') {
+      var startOfWeek = moment().startOf('week').add(7,"days");
+      var endOfWeek = moment().endOf('week').add(7,"days");
+      console.log(this.week)
+      if(this.week === 'OVER 2 WEKEN') {
         startOfWeek = startOfWeek.add(7,"days")
         endOfWeek = endOfWeek.add(7,"days")
       }
