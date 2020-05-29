@@ -125,10 +125,9 @@ export default {
       let huidigetijd=moment();
       let minorderdate = moment().set({"day":"donderdag","hour": 23, "minute": 59});
 
-
-      if(huidigetijd > minorderdate && this.$route.params.naam === 'deze-week') {
+      if(huidigetijd > minorderdate && this.$route.params.naam === 'volgende-week') {
         const origineel = event.target.innerText
-        event.target.innerText = "Te laat! bestellingen moeten voor donderdag 23:59 binnen zijn."
+        event.target.innerText = "Te laat! Het is donderdag 23:59 geweest."
         const that = event.target
         setTimeout(() => that.innerText = origineel, 1500);
 

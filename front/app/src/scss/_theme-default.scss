@@ -2,6 +2,7 @@
 @import "bulma/sass/utilities/functions.sass";
 
 
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
 // bulma colors
 /* Base: Size  */
@@ -9,9 +10,9 @@ $size-base: 1rem;
 $default-padding: $size-base * 3.5;
 
 /* Default font */
-$family-sans-serif: "Maven Pro", sans-serif;
+$family-sans-serif: 'Maven Pro', sans-serif;
 $family-primary: $family-sans-serif;
-$title-family: "Century Gothic", Monotype;
+//$title-family: "Century Gothic", Monotype;
 
 /* Base color */
 $base-color: rgb(143,169,156);

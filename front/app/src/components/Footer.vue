@@ -7,7 +7,7 @@
           <div class="content">
             <ul>
               <li>
-                <router-link class="navbar-item" :to="{ name: 'Maaltijden', params: { naam: 'deze-week' } }">
+                <router-link class="navbar-item" :to="{ name: 'Maaltijden', params: { naam: 'volgende-week' } }">
                 Maaltijden
                 </router-link>
               </li>

@@ -2,8 +2,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // eslint-disable-next-line
 import { components, AmplifyEventBus } from 'aws-amplify-vue';
-import Home from '../views/Home.vue'
 import Store from '../store/'
+import Home from '../views/Home.vue'
+import Maaltijden from '../views/Maaltijden.vue'
+import Taarten from '../views/Taarten.vue'
+import Login from '../views/Login.vue'
+import Account from '../views/Account.vue'
+import Winkelwagen from '../views/Winkelwagen.vue'
+import Producten from '../views/Producten.vue'
+import FAQ from '../views/FAQ.vue'
+import Contact from '../views/Contact.vue'
+import Ezra from '../views/Ezra.vue'
+import Catering from '../views/Catering.vue'
+import AlgemeneVoorwaarden from '../views/AlgemeneVoorwaarden.vue'
+import Privacybeleid from '../views/Privacybeleid.vue'
 
 Vue.use(VueRouter);
 
@@ -42,63 +54,63 @@ const routes = [
   {
     path: '/maaltijden/:naam',
     name: 'Maaltijden',
-    component: () => import(/* webpackChunkName: "maaltijden" */ '../views/Maaltijden.vue')
+    component: Maaltijden
   },
   {
     path: '/taarten/',
     name: 'Taarten',
-    component: () => import(/* webpackChunkName: "taarten" */ '../views/Taarten.vue')
+    component: Taarten
   },
   {
     path: '/login/',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+    component: Login
   },
   {
     path: '/account/',
     name: 'Account',
-    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue'),
+    component: Account,
     meta: { requiresAuth: true }
   },
   {
     path: '/winkelwagen/',
     name: 'Winkelwagen',
-    component: () => import(/* webpackChunkName: "winkelwagen" */ '../views/Winkelwagen.vue')
+    component: Winkelwagen
   },
   {
     path: '/producten/',
     name: 'Producten',
-    component: () => import(/* webpackChunkName: "producten" */ '../views/Producten.vue')
+    component: Producten
   },
   {
     path: '/faq/',
     name: 'FAQ',
-    component: () => import(/* webpackChunkName: "faq" */ '../views/FAQ.vue')
+    component: FAQ
   },
   {
     path: '/contact/',
     name: 'Contact',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
+    component: Contact
   },
   {
     path: '/ezra/',
     name: 'Ezra',
-    component: () => import(/* webpackChunkName: "ezra" */ '../views/Ezra.vue')
+    component: Ezra
   },
   {
     path: '/catering/',
     name: 'Catering',
-    component: () => import(/* webpackChunkName: "caitering" */ '../views/Catering.vue')
+    component: Catering
   },
   {
     path: '/algemenevoorwaarden/',
     name: 'AlgemeneVoorwaarden',
-    component: () => import(/* webpackChunkName: "algemenevoorwaarden" */ '../views/AlgemeneVoorwaarden.vue')
+    component: AlgemeneVoorwaarden
   },
   {
     path: '/privacybeleid/',
     name: 'Privacybeleid',
-    component: () => import(/* webpackChunkName: "privacybeleid" */ '../views/Privacybeleid.vue')
+    component: Privacybeleid
   }
 ]
 
