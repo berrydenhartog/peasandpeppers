@@ -39,8 +39,8 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="navbar-item" :to="{ name: 'Privacybeleid'}">
-                  Privacybeleid
+                <router-link class="navbar-item" :to="{ name: 'Privacyverklaring'}">
+                  Privacyverklaring
                 </router-link>
               </li>
               

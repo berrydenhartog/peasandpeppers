@@ -1,7 +1,7 @@
 from node:14.2.0-alpine3.11 as builder
 
 
-RUN npm install -g @vue/cli
+RUN npm install -g @vue/cli aws-cli
 
 RUN adduser -D peasandpeppers
 
@@ -11,6 +11,7 @@ WORKDIR /home/peasandpeppers/app/
 
 # install dependencies
 RUN npm install 
+COPY aws.sh /root/aws.sh
 
 # build source
 #RUN npm run build

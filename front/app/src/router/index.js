@@ -15,7 +15,7 @@ import Contact from '../views/Contact.vue'
 import Ezra from '../views/Ezra.vue'
 import Catering from '../views/Catering.vue'
 import AlgemeneVoorwaarden from '../views/AlgemeneVoorwaarden.vue'
-import Privacybeleid from '../views/Privacybeleid.vue'
+import Privacyverklaring from '../views/Privacyverklaring.vue'
 
 Vue.use(VueRouter);
 
@@ -108,9 +108,9 @@ const routes = [
     component: AlgemeneVoorwaarden
   },
   {
-    path: '/privacybeleid/',
-    name: 'Privacybeleid',
-    component: Privacybeleid
+    path: '/privacyverklaring/',
+    name: 'Privacyverklaring',
+    component: Privacyverklaring
   }
 ]
 
