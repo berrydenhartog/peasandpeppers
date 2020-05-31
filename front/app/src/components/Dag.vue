@@ -128,7 +128,6 @@ export default {
         minorderdate = minorderdate.subtract(7,"days");
       }
 
-      console.log(huidigetijd,minorderdate)
       if(huidigetijd > minorderdate && this.$route.params.naam === 'volgende-week') {
         const origineel = event.target.innerText
         event.target.innerText = "Te laat! Het is donderdag 23:59 geweest."

@@ -2,6 +2,7 @@
   <div class="myloginform">       
     <div class="columns">
       <div class="column">
+        <form v-on:submit.prevent="">
         <h1 class="title">Login</h1>
         <h2 class="subtitle">
           Beheer uw bestellingen
@@ -32,6 +33,7 @@
             <button v-bind:class="{'is-loading': isLoading}" v-on:click="submitForm" class="button is-link">Inloggen</button>
           </div>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -84,7 +86,6 @@ export default {
         this.isLoading = true;
         try {
           const user = await Auth.signIn(this.email, this.password );
-          console.log(user)
           if(user.challengeName ==null) {
             this.$router.push({ name: 'Account'})
           }

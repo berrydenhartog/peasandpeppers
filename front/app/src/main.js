@@ -12,7 +12,7 @@ const moment = require('moment')
 require('moment/locale/nl')
 
 Amplify.configure(aws_exports);
-Amplify.Logger.LOG_LEVEL = 'DEBUG';
+//Amplify.Logger.LOG_LEVEL = 'DEBUG';
 
 Vue.use(AmplifyPlugin, AmplifyModules);
 

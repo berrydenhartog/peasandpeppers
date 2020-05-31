@@ -66,7 +66,6 @@ export default {
     updatedate: async function () {
       var startOfWeek = moment().startOf('week').add(7,"days");
       var endOfWeek = moment().endOf('week').add(7,"days");
-      console.log(this.week)
       if(this.week === 'OVER 2 WEKEN') {
         startOfWeek = startOfWeek.add(7,"days")
         endOfWeek = endOfWeek.add(7,"days")

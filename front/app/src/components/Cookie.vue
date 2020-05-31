@@ -11,7 +11,7 @@
           </p>
           <br>
           <p>
-            Als u weigert worden uw interacties met deze website niet gevolgt. Er wordt nog wel 1 cookie geinstalleerd om te onthouden of gevolgt wilde worden.
+            Als u weigert worden uw interacties met deze website niet gevolgt. Er wordt nog wel 1 cookie geinstalleerd om te onthouden of u gevolgt wou worden.
           </p>
         </div>
         <div class="buttons are-medium">
@@ -30,7 +30,6 @@ export default {
   name: 'Cookie',
   methods: {
     setCookie: function (value) {
-      console.log(event)
       const cookie = {
         set:true,
         accepted:value,
