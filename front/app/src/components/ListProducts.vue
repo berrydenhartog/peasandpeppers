@@ -85,6 +85,10 @@ export default {
       for (let i = 0; i < Store.state.producten.length; i++) {
         let minorderdate = moment().set({"day":"donderdag","hour": 23, "minute": 59});
         let huidigetijd=moment();
+        if ( huidigetijd.format('dddd') == "zondag"){
+          minorderdate = minorderdate.subtract(7,"days");
+        }
+
         let weeknrcheck = moment().startOf('week').add(7,"days").week()
 
         if (huidigetijd > minorderdate && Store.state.producten[i].weeknr == weeknrcheck) {
