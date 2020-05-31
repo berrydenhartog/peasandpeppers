@@ -1,0 +1,18 @@
+#cookie {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+
+    padding-top: 20px;
+    background-color: $white-ter;
+}
+
+#cookie .container {
+    padding-bottom: 20px;
+    @include until($desktop) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}

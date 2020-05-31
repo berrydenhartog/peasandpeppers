@@ -11,7 +11,6 @@ WORKDIR /home/peasandpeppers/app/
 
 # install dependencies
 RUN npm install 
-COPY aws.sh /root/aws.sh
 
 # build source
 #RUN npm run build

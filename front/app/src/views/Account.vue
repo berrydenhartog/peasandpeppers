@@ -2,24 +2,20 @@
   <div class="myaccount">
     <HeroBar title="Account" subtitle="manage uw bestellingen" :background="require('@/assets/account.jpg')" />
     <section>
-      <div class="container">
-        <div class="field">
-          <label class="label">Naam</label>
-          <div class="control">
-            <input class="input" type="text" :value="user.username" readonly>
-          </div>
+      <div class="container content">
+        <h1 class="title">Welkom {{user.attributes['email']}}</h1>
+
+        <div class="tabs">
+          <ul>
+            <li v-bind:class="{'is-active': isActiveTab==0}"><a @click="isActiveTab=0">Bestellingen</a></li>
+            <li v-bind:class="{'is-active': isActiveTab==1}" v-if="isAdmin"><a @click="isActiveTab=1">Maaltijden</a></li>
+            <li v-bind:class="{'is-active': isActiveTab==2}" v-if="isAdmin"><a @click="isActiveTab=2">Taarten</a></li>
+          </ul>
         </div>
-        <div class="field">
-          <label class="label">E-mail</label>
-          <div class="control">
-            <input class="input" type="text" :value="user.attributes['email']" readonly>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Admin</label>
-          <div class="control">
-            <input class="input" type="text" :value="isAdmin" readonly>
-          </div>
+        <div>
+          <section v-if="isActiveTab==0" class="tab-content">Pictures content</section>
+          <section v-if="isActiveTab==1" class="tab-content">Music content</section>
+          <section v-if="isActiveTab==2" class="tab-content">Videos content</section>
         </div>
       </div>
     </section>
@@ -38,9 +34,7 @@ export default {
   },
   data () {
     return {
-      fields: [
-        { type: 'string', name: 'email', label: 'Email' },
-      ],
+      isActiveTab: 0
     }
   },
   computed: {

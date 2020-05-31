@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import Store from '../store/'
+import Store from '@/store/'
 import Notification from '@/components/Notification.vue'
 import moment from 'moment'
 

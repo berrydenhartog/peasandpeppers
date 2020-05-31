@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "deploy": "aws-cli s3 sync dist/ s3://peasandpeppers1/"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "aws-amplify": "^3.0.11",

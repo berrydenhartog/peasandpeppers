@@ -6,11 +6,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: null,
-    producten: []
+    producten: [],
+    cookie: { 
+      set: false,
+      accepted: false,
+    },
   },
   mutations: {
+    setCookieAccept(state, cookie) {
+      state.cookie = cookie
+      localStorage.setItem('cookie', JSON.stringify(state.cookie));
+    },
     setUser(state, user) {
-      state.user = user
+      if ( state.cookie.accepted == true) {
+        state.user = user
+      }
     },
     // eslint-disable-line 
     addProduct(state, product) {
@@ -30,16 +40,26 @@ export default new Vuex.Store({
         state.producten.push(product)
       }
 
-      localStorage.setItem('products', JSON.stringify(state.producten));
+      if(state.cookie.accepted) {
+        localStorage.setItem('products', JSON.stringify(state.producten));
+      }
       
     },
     deleteProduct(state, productnr) {
       state.producten.splice(productnr,1)
-      localStorage.setItem('products', JSON.stringify(state.producten));
+      if(state.cookie.accepted) {
+        localStorage.setItem('products', JSON.stringify(state.producten));
+      }
     },
     initialiseProducts(state){
-      if(localStorage.getItem('products')) {
-        state.producten = JSON.parse(localStorage.getItem('products'))
+      if(localStorage.getItem('cookie')) {
+        state.cookie = JSON.parse(localStorage.getItem('cookie'))
+      }
+      
+      if (state.cookie.accepted) {
+        if(localStorage.getItem('products') ) {
+          state.producten = JSON.parse(localStorage.getItem('products'))
+        }
       }
     }
   },
