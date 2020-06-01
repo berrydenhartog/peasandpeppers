@@ -10,13 +10,6 @@
       <a href="#zaterdag" :disabled="!getgerecht('zaterdag').length" class="button is-link">Zaterdag</a>
       <a href="#zondag" :disabled="!getgerecht('zondag').length" class="button is-link">Zondag</a>
     </div>
-    <AccountDag :gerechten="getgerecht('maandag')" :dag="maandag"/>
-    <AccountDag :gerechten="getgerecht('dinsdag')" :dag="dinsdag"/>
-    <AccountDag :gerechten="getgerecht('woensdag')" :dag="woensdag"/>
-    <AccountDag :gerechten="getgerecht('donderdag')" :dag="donderdag"/>
-    <AccountDag :gerechten="getgerecht('vrijdag')" :dag="vrijdag"/>
-    <AccountDag :gerechten="getgerecht('zaterdag')" :dag="zaterdag"/>
-    <AccountDag :gerechten="getgerecht('zondag')" :dag="zondag"/>
     <div v-for="dag in dagen" :key="dag.index">
       <a :name="getdag(dag) | moment('dddd')"></a>
       <h3 class="title">{{getdag(dag) | moment("dddd D MMM")}}</h3>
@@ -63,14 +56,12 @@
 </template>
 
 <script>
-import AccountDag from '@/components/AccountDag.vue'
 import moment from 'moment'
 import GerechtenRepository from "../repository/GerechtenRepository";
 
 export default {
   name: 'Week',
   components: {
-    AccountDag,
   },
   props: {
     week: String,

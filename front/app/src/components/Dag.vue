@@ -47,7 +47,6 @@
             </div>
 
             <footer class="card-footer">
-              <button v-on:click="meerinfo" class="button card-footer-item is-link-dark is-fullwidth">Meer Info</button>
               <button v-on:click="bestel" class="button card-footer-item is-link is-fullwidth">Bestel</button>
               <input type="hidden" name="dag" :value="dag | moment('dddd')">
               <input type="hidden" name="volgnummer" :value="cindex*2+index">
@@ -116,8 +115,8 @@ export default {
         startOfWeek = startOfWeek.add(7,"days")
       }
       const weeknr = startOfWeek.week()
-      const dag = event.target.parentNode.childNodes[2].value
-      const volgnummer = event.target.parentNode.childNodes[3].value
+      const dag = event.target.parentNode.childNodes[1].value
+      const volgnummer = event.target.parentNode.childNodes[2].value
       const naam = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[0].innerText
       let prijs = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[2].innerText
       prijs = Number(prijs.split("/")[0])*100

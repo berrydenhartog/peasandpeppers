@@ -68,9 +68,7 @@
       </div>
       <div class="content has-text-centered">
         <p>
-          &copy; <strong> Peas  &#38; Peppers</strong>
-        </p>
-        <p>
+          &copy; <strong> Peas  &#38; Peppers</strong> <br>
           Made by <a href="https://sugarfly.nl" target="_blank">SugarFly</a>
         </p>
       </div>

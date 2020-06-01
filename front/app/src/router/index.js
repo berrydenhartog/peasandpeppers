@@ -16,6 +16,7 @@ import Ezra from '../views/Ezra.vue'
 import Catering from '../views/Catering.vue'
 import AlgemeneVoorwaarden from '../views/AlgemeneVoorwaarden.vue'
 import Privacyverklaring from '../views/Privacyverklaring.vue'
+import Error from '../views/Error.vue'
 
 Vue.use(VueRouter);
 
@@ -112,12 +113,21 @@ const routes = [
     name: 'Privacyverklaring',
     component: Privacyverklaring
   }
+  ,
+  {
+    path: '*',
+    name: 'Error',
+    component: Error
+  }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior() {
+    return {x: 0, y: 0}
+  }
 })
 
 router.beforeResolve(async (to, from, next) => {

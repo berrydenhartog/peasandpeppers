@@ -12,8 +12,9 @@
           <div class="tabs">
             <ul>
               <li v-bind:class="{'is-active': isActiveTab==0}"><a @click="isActiveTab=0">Bestellingen</a></li>
-              <li v-bind:class="{'is-active': isActiveTab==1}" v-if="isAdmin"><a @click="isActiveTab=1">Maaltijden</a></li>
-              <li v-bind:class="{'is-active': isActiveTab==2}" v-if="isAdmin"><a @click="isActiveTab=2">Taarten</a></li>
+              <li v-bind:class="{'is-active': isActiveTab==1}" v-if="isAdmin"><a @click="isActiveTab=1">Image Factory</a></li>
+              <li v-bind:class="{'is-active': isActiveTab==2}" v-if="isAdmin"><a @click="isActiveTab=2">Maaltijden</a></li>
+              <li v-bind:class="{'is-active': isActiveTab==3}" v-if="isAdmin"><a @click="isActiveTab=3">Taarten</a></li>
             </ul>
           </div>
           <div>
@@ -21,10 +22,14 @@
               todo
             </section>
             <section v-if="isActiveTab==1" class="tab-content">
-              <AccountMaaltijden />
+              <ImageFactory />
             </section>
             <section v-if="isActiveTab==2" class="tab-content">
-              {{user.signInUserSession.idToken.jwtToken}}
+              <AccountMaaltijden />
+            </section>
+            <section v-if="isActiveTab==3" class="tab-content">
+              todo
+              {{user.signInUserSession}}
             </section>
           </div>
         </div>
@@ -38,13 +43,14 @@
 import HeroBar from '@/components/HeroBar.vue'
 import Store from '@/store/'
 import AccountMaaltijden from '@/components/AccountMaaltijden.vue'
-
+import ImageFactory from '@/components/ImageFactory.vue'
 
 export default {
   name: 'Account',
   components: {
       HeroBar,
       AccountMaaltijden,
+      ImageFactory,
   },
   mounted() {
     if (!this.isAdmin) {

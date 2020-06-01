@@ -11,7 +11,7 @@ const baseURL = `${baseDomain}/prod`; // Incase of /api/v1;
 
 let instance = axios.create({
   baseURL,
-  timeout: 5000,
+  timeout: 29000,
   headers: {
     'Content-Type': 'application/json',
     'X-Api-Key': 'mAt2uaXNZd2904nbipxwZ1uoJ9KSOco6atC82s0S',
@@ -23,7 +23,7 @@ instance.interceptors.request.use(config => {
   if ( Store.state.user ) {
     token = Store.state.user.signInUserSession.idToken.jwtToken
   } 
-  config.headers.Authorization = token;
+  config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
