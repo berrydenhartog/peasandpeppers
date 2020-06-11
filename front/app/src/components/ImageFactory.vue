@@ -98,16 +98,12 @@ export default {
           if (data.statusCode == 200) {
             console.log(data)
           } else {
-            console.log(data)
             this.errors.push('Sorry, Er is een technische storing, we kunnen uw foto niet uploaden.');
           }
           this.isLoading = false;
-
           
         } catch (error) {
-          this.errors.push(error.message);
-          console.log(Object.keys(error))
-          console.log(error.response)
+          this.errors.push("Timeout, probeer een kleiner plaatje te uploaden");
           this.isLoading = false;
         }
       }
