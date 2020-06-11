@@ -25,7 +25,7 @@
               <ImageFactory />
             </section>
             <section v-if="isActiveTab==2" class="tab-content">
-              <AccountMaaltijden />
+              <AccountShop />
             </section>
             <section v-if="isActiveTab==3" class="tab-content">
               todo
@@ -42,14 +42,14 @@
 // @ is an alias to /src
 import HeroBar from '@/components/HeroBar.vue'
 import Store from '@/store/'
-import AccountMaaltijden from '@/components/AccountMaaltijden.vue'
+import AccountShop from '@/components/AccountShop.vue'
 import ImageFactory from '@/components/ImageFactory.vue'
 
 export default {
   name: 'Account',
   components: {
       HeroBar,
-      AccountMaaltijden,
+      AccountShop,
       ImageFactory,
   },
   mounted() {

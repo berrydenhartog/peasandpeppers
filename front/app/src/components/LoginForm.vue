@@ -5,7 +5,7 @@
         <form v-on:submit.prevent="">
         <h1 class="title">Login</h1>
         <h2 class="subtitle">
-          Beheer uw bestellingen
+          Beheer je bestellingen
         </h2>
         <div class="field">
           <div class="control has-icons-left ">

@@ -3,6 +3,6 @@ const resource = '/uploads';
 
 export default {
     upload(payload) {
-        return Repository.post(`${resource}`, payload);
+        return Repository.post(`${resource}`, payload,{ timeout: 29000});
     },
 };

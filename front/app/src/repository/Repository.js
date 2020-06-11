@@ -1,17 +1,12 @@
 import axios from "axios";
-import Store from '@/store/'
+import Auth from '@aws-amplify/auth';
+
 const baseDomain = "https://rb5j31l1t7.execute-api.eu-west-1.amazonaws.com";
 const baseURL = `${baseDomain}/prod`; // Incase of /api/v1;
 
-//Store.state.user.signInUserSession.accessToken
-//let token = ""
-//if ( Store.state.user ) {
-//  token = Store.state.user.signInUserSession.idToken.jwtToken
-//} 
-
 let instance = axios.create({
   baseURL,
-  timeout: 29000,
+  timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
     'X-Api-Key': 'mAt2uaXNZd2904nbipxwZ1uoJ9KSOco6atC82s0S',
@@ -19,12 +14,15 @@ let instance = axios.create({
 });
 
 instance.interceptors.request.use(config => {
-  let token = ""
-  if ( Store.state.user ) {
-    token = Store.state.user.signInUserSession.idToken.jwtToken
-  } 
-  config.headers.Authorization = `Bearer ${token}`;
-  return config;
+  return Auth.currentSession().then(
+    session => { 
+      let accessToken = session.idToken.jwtToken; 
+      config.headers.Authorization = `Bearer ${accessToken}`;
+      return Promise.resolve(config); 
+    }) 
+  .catch(() => { 
+    return Promise.resolve(config); 
+  }); 
 });
 
 export default instance

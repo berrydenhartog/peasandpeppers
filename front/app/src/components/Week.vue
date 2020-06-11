@@ -1,6 +1,14 @@
 <template>    
   <div class="myweek"> 
     <h2 class="title">Het menu van {{startOfWeek | moment("D MMM")}} - {{endOfWeek | moment("D MMM")}}  </h2>
+
+    <p v-if="week == 'MAALTIJDEN'">
+      Op deze pagina vind je de maaltijden van deze periode. Alvast benieuwd naar de maaltijden van de volgende periode? 
+      <router-link :to="{ name: 'MaaltijdenVolgende' }">
+       Klik dan hier!
+      </router-link>
+    </p>
+
     <div class="buttons">
       <a href="#maandag" :disabled="!getgerecht('maandag').length" class="button is-link">Maandag</a>
       <a href="#dinsdag" :disabled="!getgerecht('dinsdag').length" class="button is-link">Dinsdag</a>
@@ -66,7 +74,8 @@ export default {
     updatedate: async function () {
       var startOfWeek = moment().startOf('week').add(7,"days");
       var endOfWeek = moment().endOf('week').add(7,"days");
-      if(this.week === 'OVER 2 WEKEN') {
+
+      if(this.week === 'MAALTIJDEN-VOLGENDE-WEEK') {
         startOfWeek = startOfWeek.add(7,"days")
         endOfWeek = endOfWeek.add(7,"days")
       }

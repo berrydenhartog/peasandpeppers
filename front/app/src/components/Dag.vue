@@ -111,7 +111,7 @@ export default {
       const grote = select.childNodes[select.value].innerText
       const grotevalue = select.childNodes[select.value].value
       let startOfWeek = moment().startOf('week').add(7,"days");
-      if(this.$route.params.naam === 'over-2-weken') {
+      if(this.$route.params.naam === 'MAALTIJDEN-VOLGENDE-WEEK') {
         startOfWeek = startOfWeek.add(7,"days")
       }
       const weeknr = startOfWeek.week()
@@ -127,7 +127,7 @@ export default {
         minorderdate = minorderdate.subtract(7,"days");
       }
 
-      if(huidigetijd > minorderdate && this.$route.params.naam === 'volgende-week') {
+      if(huidigetijd > minorderdate && this.$route.params.naam === 'MAALTIJDEN') {
         const origineel = event.target.innerText
         event.target.innerText = "Te laat! Het is donderdag 23:59 geweest."
         const that = event.target

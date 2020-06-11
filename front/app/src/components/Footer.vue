@@ -7,25 +7,30 @@
           <div class="content">
             <ul>
               <li>
-                <router-link class="navbar-item" :to="{ name: 'Maaltijden', params: { naam: 'volgende-week' } }">
-                Maaltijden
+                <router-link class="navbar-item" :to="{ name: 'Maaltijden' }">
+                  Shop
                 </router-link>
               </li>
               <li>
-                <router-link class="navbar-item" :to="{ name: 'Catering'}">
-                  Catering
+                <router-link class="navbar-item" :to="{ name: 'Abonnementen'}">
+                  Abonnementen
+                </router-link>
+              </li>
+              <li>
+                <router-link class="navbar-item" :to="{ name: 'OverOns'}">
+                  Over Ons
                 </router-link>
               </li>
             </ul>
           </div>
         </div>
         <div class="column">
-          <h1 class="title is-5">Over Ons</h1>
+          <h1 class="title is-5">Service</h1>
           <div class="content">
             <ul>
               <li>
-                <router-link class="navbar-item" :to="{ name: 'Contact'}">
-                  Contact
+                <router-link class="navbar-item" :to="{ name: 'ZoWerktHet'}">
+                  Zo werkt het
                 </router-link>
               </li>
               <li>
@@ -34,13 +39,18 @@
                 </router-link>
               </li>
               <li>
+                <router-link class="navbar-item" :to="{ name: 'Contact'}">
+                  Contact
+                </router-link>
+              </li>
+              <li>
                 <router-link class="navbar-item" :to="{ name: 'AlgemeneVoorwaarden'}">
-                  Algemene voorwaarden
+                  Algemene Voorwaarden
                 </router-link>
               </li>
               <li>
                 <router-link class="navbar-item" :to="{ name: 'Privacyverklaring'}">
-                  Privacyverklaring
+                  Privacybeleid
                 </router-link>
               </li>
               
@@ -48,20 +58,15 @@
           </div>
         </div>
         <div class="column">
-          <h1 class="title is-5">Volg ons op social</h1>
+          <h1 class="title is-5">Follow us</h1>
           <span class="icon is-large">
-            <a href="https://www.facebook.com" target="_blank">
+            <a href="https://www.facebook.com/pages/category/Caterer/Peas-Peppers-105556761066101/" target="_blank">
               <i class="mdi mdi-24px mdi-facebook"></i>
             </a>
           </span>
           <span class="icon is-large">
-            <a href="https://www.instagram.com" target="_blank">
+            <a href="https://www.instagram.com/peas.and.peppers/" target="_blank">
               <i class="mdi mdi-24px mdi-instagram"></i>
-            </a>
-          </span>
-          <span class="icon is-large">
-            <a href="https://www.youtube.com" target="_blank">
-              <i class="mdi mdi-24px mdi-youtube"></i>
             </a>
           </span>
         </div>

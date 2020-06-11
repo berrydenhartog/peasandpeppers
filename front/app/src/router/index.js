@@ -4,19 +4,23 @@ import VueRouter from 'vue-router'
 import { components, AmplifyEventBus } from 'aws-amplify-vue';
 import Store from '../store/'
 import Home from '../views/Home.vue'
-import Maaltijden from '../views/Maaltijden.vue'
+import Maaltijden from '../views/Shop.vue'
+import MaaltijdenVolgende from '../views/Shop.vue'
 import Taarten from '../views/Taarten.vue'
 import Login from '../views/Login.vue'
 import Account from '../views/Account.vue'
 import Winkelwagen from '../views/Winkelwagen.vue'
-import Producten from '../views/Producten.vue'
 import FAQ from '../views/FAQ.vue'
 import Contact from '../views/Contact.vue'
-import Ezra from '../views/Ezra.vue'
-import Catering from '../views/Catering.vue'
 import AlgemeneVoorwaarden from '../views/AlgemeneVoorwaarden.vue'
 import Privacyverklaring from '../views/Privacyverklaring.vue'
 import Error from '../views/Error.vue'
+import Abonnementen from '../views/Abonnementen.vue'
+import OverOns from '../views/OverOns.vue'
+import ZoWerktHet from '../views/ZoWerktHet.vue'
+import Overige from '../views/Overige.vue'
+import HoeWijRollen from '../views/HoeWijRollen.vue'
+
 
 Vue.use(VueRouter);
 
@@ -53,14 +57,44 @@ const routes = [
     component: Home
   },
   {
-    path: '/maaltijden/:naam',
+    path: '/abonnementen',
+    name: 'Abonnementen',
+    component: Abonnementen
+  },
+  {
+    path: '/shop/taarten',
+    name: 'Taarten',
+    component: Taarten
+  },
+  {
+    path: '/shop/overige',
+    name: 'Overige',
+    component: Overige
+  },
+  {
+    path: '/shop/maaltijden',
     name: 'Maaltijden',
     component: Maaltijden
   },
   {
-    path: '/taarten/',
-    name: 'Taarten',
-    component: Taarten
+    path: '/shop/maaltijden/volgende-week',
+    name: 'MaaltijdenVolgende',
+    component: MaaltijdenVolgende
+  },
+  {
+    path: '/over-ons',
+    name: 'OverOns',
+    component: OverOns
+  },
+  {
+    path: '/hoe-wij-rollen',
+    name: 'HoeWijRollen',
+    component: HoeWijRollen
+  },
+  {
+    path: '/zo-werkt-het',
+    name: 'ZoWerktHet',
+    component: ZoWerktHet
   },
   {
     path: '/login/',
@@ -79,11 +113,6 @@ const routes = [
     component: Winkelwagen
   },
   {
-    path: '/producten/',
-    name: 'Producten',
-    component: Producten
-  },
-  {
     path: '/faq/',
     name: 'FAQ',
     component: FAQ
@@ -92,16 +121,6 @@ const routes = [
     path: '/contact/',
     name: 'Contact',
     component: Contact
-  },
-  {
-    path: '/ezra/',
-    name: 'Ezra',
-    component: Ezra
-  },
-  {
-    path: '/catering/',
-    name: 'Catering',
-    component: Catering
   },
   {
     path: '/algemenevoorwaarden/',
@@ -125,9 +144,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
-  scrollBehavior() {
-    return {x: 0, y: 0}
-  }
+	scrollBehavior(to, from, savedPosition) {
+		if (to.hash) {
+      return { selector: to.hash }
+		} else if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 }
+    }
+	}
 })
 
 router.beforeResolve(async (to, from, next) => {

@@ -2,9 +2,9 @@
   <div class="mywinkelwagen">
     <section>
       <div class="container mainpadding">
-        <h1 class="title">Uw Winkelwagen</h1>
+        <h1 class="title">Winkelwagen</h1>
         <ListProducts v-if="producten.length" />
-        <Notification v-if="!producten.length" message="Uw winkelmandje is leeg" />
+        <Notification v-if="!producten.length" message="Jouw winkelwagen is leeg" />
       </div>
     </section>
   </div>

@@ -14,35 +14,51 @@
       <div class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-uppercase">Maaltijden</a>
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase" :to="{ name: 'Maaltijden' }">
+              Shop
+            </router-link>
             <div class="navbar-dropdown">
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'volgende-week' } }">
-                Volgende week
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden' }">
+                Maaltijden
               </router-link>
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden', params: { naam: 'over-2-weken' } }">
-                Over 2 weken
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Taarten'}">
+                Taarten
+              </router-link>
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Overige' }">
+                Overige
               </router-link>
             </div>
           </div>  
           <div class="navbar-item has-dropdown  is-hoverable">
-            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Taarten'}">
-              Taarten
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Abonnementen'}">
+              Abonnementen
             </router-link>
           </div>
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-uppercase">Over Peas &amp; Peppers</a>
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase" :to="{ name: 'ZoWerktHet' }">
+              Zo werkt het
+            </router-link>
             <div class="navbar-dropdown">
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Ezra' }">
-                Ezra
-              </router-link>
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Contact' }">
-                Contact
+              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'HoeWijRollen' }">
+                Hoe Wij Rollen
               </router-link>
               <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'FAQ' }">
                 FAQ
               </router-link>
             </div>
-          </div> 
+          </div>
+          <div class="navbar-item has-dropdown  is-hoverable">
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'OverOns'}">
+              Over Ons
+            </router-link>
+          </div>
+          <div class="navbar-item has-dropdown  is-hoverable">
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Contact'}">
+              Contact
+            </router-link>
+          </div>
+
+
         </div>
         <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable">

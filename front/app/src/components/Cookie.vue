@@ -4,14 +4,10 @@
       <div class="container">
         <div class="content">
           <p>
-          Deze website slaat cookies op op uw computer. 
-          Deze cookies worden gebruikt om informatie op te slaan over hoe u met deze website interact en stelt ons in staat om uw acties te onthouden.
-          We gebruiken deze informatie om uw experience van deze site te verbeteren, en voor analyse and metric doeleinden van onze bezoekers. 
-          Als u meer wilt weten kijk dan naar onze Privacy verklaring. 
+          Deze website slaat cookies op op jou computer.  Als je meer wilt weten kijk dan naar onze Privacy verklaring. 
           </p>
-          <br>
           <p>
-            Als u weigert worden uw interacties met deze website niet gevolgt. Er wordt nog wel 1 cookie geinstalleerd om te onthouden of u gevolgt wou worden.
+            Als je weigert worden je interacties met deze website niet gevolgt. Er wordt nog wel 1 cookie geinstalleerd om deze instelling te bewaren.
           </p>
         </div>
         <div class="buttons are-medium">

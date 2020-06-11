@@ -110,7 +110,7 @@ export default {
       }
 
       if (!this.naam) {
-        this.errors.push('Vul uw naam in.');
+        this.errors.push('Vul je naam in.');
       }
       if (!this.bericht) {
         this.errors.push('Vul een bericht in.');
@@ -129,9 +129,9 @@ export default {
             this.email=null;
             this.naam=null;
             this.bericht=null;
-            this.modalbericht = 'We hebben uw bericht ontvangen en zullen zo spoedig mogelijk reageren. '
+            this.modalbericht = 'We hebben je bericht ontvangen en zullen zo spoedig mogelijk reageren. '
           } else {
-            this.modalbericht = 'Sorry, Er is een technische storing, we kunnen uw mail niet afleveren. '
+            this.modalbericht = 'Sorry, Er is een technische storing, we kunnen je mail niet afleveren. '
           }
           this.activeModal = true;
           this.isLoading = false;

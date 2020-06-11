@@ -1,6 +1,9 @@
 <template>
   <div class="myfaq">
     <HeroBar title="FAQ" :background="require('@/assets/faq.jpg')" />
+    <p>
+      text van ezra
+    </p>
   </div>
 </template>
 

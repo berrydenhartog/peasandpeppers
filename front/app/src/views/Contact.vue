@@ -1,6 +1,6 @@
 <template>
   <div class="mycontact">
-    <HeroBar title="HAPPY TO HELP!" :background="require('@/assets/contact.jpg')" />
+    <HeroBar title="Nice To Meet You" :background="require('@/assets/contact.jpg')" />
     <section>
       <div class="container mainpadding">
         <ContactForm title="Heb je een vraag?" subtitle="Laat het ons hieronder weten." />

@@ -1,12 +1,17 @@
 <template>
   <div class="myhome">
-    <section class="hero is-medium" id="homehero">
+    <section class="hero is-fullheight" id="homehero">
       <div class="hero-body">
-        <figure class="image is-3by1">
-          <img src="@/assets/home2.png">
-        </figure>
+        <div class="container">
+          <figure class="image is-3by1">
+            <img src="@/assets/home2.png" style="opacity: 0.95;">
+          </figure>
+        </div>
       </div>
     </section>
+    <p>
+      Ezra gaat hier iets voor aanleveren
+    </p>
   </div>
 </template>
 
