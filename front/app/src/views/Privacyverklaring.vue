@@ -124,7 +124,7 @@
               Op grond van artikel 13 lid 2 sub b AVG heeft eenieder recht op inzage van en rectificatie of wissing van zijn
               persoonsgegevens of beperking van de hem betreffende verwerking, alsmede het recht tegen de verwerking bezwaar
               te maken en het recht op gegevensoverdraagbaarheid. U kunt deze rechten uitoefenen door contact met ons op te
-              nemen via info@peasandpeppers.nl .
+              nemen via info@peasandpeppers.nl.
             </p>
             <p>
               Ieder verzoek daartoe dient te worden vergezeld van een kopie van een geldig identiteitsbewijs, waarop u uw
@@ -152,7 +152,7 @@
             </h2>
             <p>
               U kunt commerciële aanbiedingen krijgen van de beheerder. Indien u deze niet (meer) wenst te ontvangen, stuurt u
-              een mail naar het volgende adres: info@peasandpeppers.nl .
+              een mail naar het volgende adres: info@peasandpeppers.nl.
             </p>
             <p>
               Indien u tijdens het bezoek van de website enige persoonsgegevens tegenkomt, dient u zich te onthouden van het
@@ -236,7 +236,7 @@
             </h2>
             <p>
               Voor vragen, productinformatie of informatie over de website zelf, kunt u zich richten tot: E.G. Pronk,
-              info@peasandpeppers.nl .
+              info@peasandpeppers.nl.
             </p>
           </div>
         </div>

@@ -21,6 +21,11 @@
                   Over Ons
                 </router-link>
               </li>
+              <li>
+                <router-link class="navbar-item" :to="{ name: 'Catering'}">
+                  Catering
+                </router-link>
+              </li>
             </ul>
           </div>
         </div>

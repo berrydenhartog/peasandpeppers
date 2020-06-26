@@ -2,12 +2,14 @@
   <div class="myweek"> 
     <h2 class="title">Het menu van {{startOfWeek | moment("D MMM")}} - {{endOfWeek | moment("D MMM")}}  </h2>
 
-    <p v-if="week == 'MAALTIJDEN'">
-      Op deze pagina vind je de maaltijden van deze periode. Alvast benieuwd naar de maaltijden van de volgende periode? 
-      <router-link :to="{ name: 'MaaltijdenVolgende' }">
-       Klik dan hier!
-      </router-link>
-    </p>
+    <div class="content">
+      <p v-if="week == 'MAALTIJDEN'">
+        Op deze pagina vind je de maaltijden van deze week. Ons menu verandert eens per 6 weken. Benieuwd naar de maaltijden van de volgende week?
+        <router-link :to="{ name: 'MaaltijdenVolgende' }">
+         Klik dan hier!
+        </router-link>
+      </p>
+    </div>
 
     <div class="buttons">
       <a href="#maandag" :disabled="!getgerecht('maandag').length" class="button is-link">Maandag</a>

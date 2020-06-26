@@ -1,7 +1,11 @@
 from node:14.2.0-alpine3.11 as builder
 
+RUN apk --no-cache update && \
+    apk --no-cache add python py-pip && \
+    pip --no-cache-dir install awscli && \
+    rm -rf /var/cache/apk/*
 
-RUN npm install -g @vue/cli aws-cli
+RUN npm install -g @vue/cli 
 
 RUN adduser -D peasandpeppers
 

@@ -2,8 +2,8 @@
   <div class="myaccountmaaltijden">
     <div class="buttons">
       <button @click="setWeeknr(week)" v-for="week in 52" :key="week.index" class="button is-link" v-bind:class="{'is-light':week == weeknr}">{{week}}</button>
-      <AccountWeek :week="String(weeknr)" />
     </div>
+    <AccountWeek v-if="render" :images="images" :week="String(weeknr)" />
   </div>
 </template>
 
@@ -11,6 +11,7 @@
 import Store from '@/store/'
 import moment from 'moment'
 import AccountWeek from '@/components/AccountWeek.vue'
+import UploadRepository from "@/repository/UploadRepository";
 
 export default {
   name: 'AccountMaaltijden',
@@ -19,12 +20,15 @@ export default {
   },
   data() {
     return {
-      weeknr:null
+      weeknr:null,
+      images:[],
+      render:false,
     }
   },
   mounted: function () { 
     this.$moment.locale('nl')
-    this.weeknr =moment().week()
+    this.weeknr =moment().week()+1
+    this.getImages()
   },
   computed: {
     user() { 
@@ -38,6 +42,11 @@ export default {
     }
   },
   methods: {
+    getImages: async function () {
+      const { data } = await UploadRepository.list()
+      this.images=data['body']
+      this.render=true
+    },
     setWeeknr: function (nr) {
       this.weeknr=nr
     },

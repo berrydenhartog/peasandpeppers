@@ -31,3 +31,21 @@ for f in heroimages/*.jpg; do
    echo `identify /home/user/projects/peasandpeppers/front/app/src/assets/${basename}`
 
 done
+
+
+for f in normalimages/*.jpg; do
+   basename=`basename ${f}`
+   result=`identify ${f}`
+   echo "$result"
+   imagedimension=`echo $result | cut -d' ' -f 3`
+   curx=`echo $imagedimension | cut -d'x' -f 1`
+   cury=`echo $imagedimension | cut -d'x' -f 2`
+   
+   # redize max 2560
+   newx=$(($curx>512 ? 512 : $curx))
+   newy=$(($cury * $newx / $curx   ))
+   echo "$newx,$newy"
+   
+   convert ${f} -resize "${newx}x${cury}>" /home/user/projects/peasandpeppers/front/app/src/assets/${basename}
+
+done

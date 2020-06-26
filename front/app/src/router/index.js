@@ -20,6 +20,7 @@ import OverOns from '../views/OverOns.vue'
 import ZoWerktHet from '../views/ZoWerktHet.vue'
 import Overige from '../views/Overige.vue'
 import HoeWijRollen from '../views/HoeWijRollen.vue'
+import Catering from '../views/Catering.vue'
 
 
 Vue.use(VueRouter);
@@ -116,6 +117,11 @@ const routes = [
     path: '/faq/',
     name: 'FAQ',
     component: FAQ
+  },
+  {
+    path: '/catering/',
+    name: 'Catering',
+    component: Catering
   },
   {
     path: '/contact/',

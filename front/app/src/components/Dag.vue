@@ -11,7 +11,7 @@
               <div class="columns">
                 <div class="column">
                   <figure class="image is-16by9">
-                    <img :src="gerecht.image" alt="image">
+                    <img :src="'/'+gerecht.image" :alt="gerecht.image">
                   </figure>
                 </div>
                 <div class="column">

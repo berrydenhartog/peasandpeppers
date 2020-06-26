@@ -29,7 +29,6 @@
             </section>
             <section v-if="isActiveTab==3" class="tab-content">
               todo
-              {{user.signInUserSession}}
             </section>
           </div>
         </div>

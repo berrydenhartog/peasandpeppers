@@ -4,10 +4,7 @@
       <div class="container">
         <div class="content">
           <p>
-          Deze website slaat cookies op op jou computer.  Als je meer wilt weten kijk dan naar onze Privacy verklaring. 
-          </p>
-          <p>
-            Als je weigert worden je interacties met deze website niet gevolgt. Er wordt nog wel 1 cookie geinstalleerd om deze instelling te bewaren.
+            Peas &amp; Peppers maakt gebruik van cookies. Bekijk ons <router-link :to="{ name: 'Privacyverklaring' }">privacybeleid</router-link> voor meer informatie.
           </p>
         </div>
         <div class="buttons are-medium">
