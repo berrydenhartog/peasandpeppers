@@ -35,7 +35,7 @@
             </router-link>
           </div>
           <div class="navbar-item has-dropdown is-hoverable">
-            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase" :to="{ name: 'ZoWerktHet' }">
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase" :to="{ name: 'HoeWijRollen' }">
               Zo werkt het
             </router-link>
             <div class="navbar-dropdown">

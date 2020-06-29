@@ -9,6 +9,7 @@
     "deploy": "./deploy.sh"
   },
   "dependencies": {
+    "@creativebulma/bulma-divider": "^1.1.0",
     "aws-amplify": "^3.0.11",
     "aws-amplify-vue": "^2.1.1",
     "aws-sdk": "^2.679.0",

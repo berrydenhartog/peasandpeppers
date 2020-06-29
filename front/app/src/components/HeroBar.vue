@@ -4,7 +4,7 @@
     <section class="hero is-medium" v-bind:style="{ backgroundImage: 'url(' + background + ')' }">
       <div class="hero-body">
         <div class="container" >
-          <div class="box">
+          <div class="box has-background-link">
             <h1 class="title is-uppercase">
               {{title}}
             </h1>

@@ -2,10 +2,11 @@
 
 @import 'theme-default.scss';
 @import '~bulma/bulma.sass';
-
+@import '~@creativebulma/bulma-divider/src/sass/index.sass';
 
 @import 'theme.scss';
 @import 'nav-bar.scss';
 @import 'hero-bar.scss';
 @import 'table.scss';
 @import 'cookie.scss';
+

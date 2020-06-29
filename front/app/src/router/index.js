@@ -17,7 +17,6 @@ import Privacyverklaring from '../views/Privacyverklaring.vue'
 import Error from '../views/Error.vue'
 import Abonnementen from '../views/Abonnementen.vue'
 import OverOns from '../views/OverOns.vue'
-import ZoWerktHet from '../views/ZoWerktHet.vue'
 import Overige from '../views/Overige.vue'
 import HoeWijRollen from '../views/HoeWijRollen.vue'
 import Catering from '../views/Catering.vue'
@@ -91,11 +90,6 @@ const routes = [
     path: '/hoe-wij-rollen',
     name: 'HoeWijRollen',
     component: HoeWijRollen
-  },
-  {
-    path: '/zo-werkt-het',
-    name: 'ZoWerktHet',
-    component: ZoWerktHet
   },
   {
     path: '/login/',

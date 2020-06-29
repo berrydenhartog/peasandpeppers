@@ -34,7 +34,7 @@
           <div class="content">
             <ul>
               <li>
-                <router-link class="navbar-item" :to="{ name: 'ZoWerktHet'}">
+                <router-link class="navbar-item" :to="{ name: 'HoeWijRollen'}">
                   Zo werkt het
                 </router-link>
               </li>
