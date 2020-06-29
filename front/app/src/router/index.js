@@ -92,43 +92,43 @@ const routes = [
     component: HoeWijRollen
   },
   {
-    path: '/login/',
+    path: '/login',
     name: 'Login',
     component: Login
   },
   {
-    path: '/account/',
+    path: '/account',
     name: 'Account',
     component: Account,
     meta: { requiresAuth: true }
   },
   {
-    path: '/winkelwagen/',
+    path: '/winkelwagen',
     name: 'Winkelwagen',
     component: Winkelwagen
   },
   {
-    path: '/faq/',
+    path: '/faq',
     name: 'FAQ',
     component: FAQ
   },
   {
-    path: '/catering/',
+    path: '/catering',
     name: 'Catering',
     component: Catering
   },
   {
-    path: '/contact/',
+    path: '/contact',
     name: 'Contact',
     component: Contact
   },
   {
-    path: '/algemenevoorwaarden/',
+    path: '/algemenevoorwaarden',
     name: 'AlgemeneVoorwaarden',
     component: AlgemeneVoorwaarden
   },
   {
-    path: '/privacyverklaring/',
+    path: '/privacyverklaring',
     name: 'Privacyverklaring',
     component: Privacyverklaring
   }

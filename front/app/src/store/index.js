@@ -51,6 +51,12 @@ export default new Vuex.Store({
         localStorage.setItem('products', JSON.stringify(state.producten));
       }
     },
+    resetProduct(state) {
+      state.producten = [];
+      if(state.cookie.accepted) {
+        localStorage.setItem('products', JSON.stringify(state.producten));
+      }
+    },
     initialiseProducts(state){
       if(localStorage.getItem('cookie')) {
         state.cookie = JSON.parse(localStorage.getItem('cookie'))

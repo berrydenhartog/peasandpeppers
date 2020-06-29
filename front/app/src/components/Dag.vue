@@ -110,11 +110,7 @@ export default {
       const aantal = event.target.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].childNodes[0].value
       const grote = select.childNodes[select.value].innerText
       const grotevalue = select.childNodes[select.value].value
-      let startOfWeek = moment().startOf('week').add(7,"days");
-      if(this.$route.params.naam === 'MAALTIJDEN-VOLGENDE-WEEK') {
-        startOfWeek = startOfWeek.add(7,"days")
-      }
-      const weeknr = startOfWeek.week()
+      const weeknr = moment(this.dag).week();
       const dag = event.target.parentNode.childNodes[1].value
       const volgnummer = event.target.parentNode.childNodes[2].value
       const naam = event.target.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[0].innerText
@@ -127,7 +123,7 @@ export default {
         minorderdate = minorderdate.subtract(7,"days");
       }
 
-      if(huidigetijd > minorderdate && this.$route.params.naam === 'MAALTIJDEN') {
+      if(huidigetijd > minorderdate && this.$route.name === 'Maaltijden') {
         const origineel = event.target.innerText
         event.target.innerText = "Te laat! Het is donderdag 23:59 geweest."
         const that = event.target
