@@ -7,16 +7,6 @@
           <div class="content">
             <ul>
               <li>
-                <router-link class="navbar-item" :to="{ name: 'Maaltijden' }">
-                  Shop
-                </router-link>
-              </li>
-              <li>
-                <router-link class="navbar-item" :to="{ name: 'Abonnementen'}">
-                  Abonnementen
-                </router-link>
-              </li>
-              <li>
                 <router-link class="navbar-item" :to="{ name: 'OverOns'}">
                   Over Ons
                 </router-link>
@@ -33,16 +23,6 @@
           <h1 class="title is-5">Service</h1>
           <div class="content">
             <ul>
-              <li>
-                <router-link class="navbar-item" :to="{ name: 'HoeWijRollen'}">
-                  Zo werkt het
-                </router-link>
-              </li>
-              <li>
-                <router-link class="navbar-item" :to="{ name: 'FAQ'}">
-                  FAQ
-                </router-link>
-              </li>
               <li>
                 <router-link class="navbar-item" :to="{ name: 'Contact'}">
                   Contact

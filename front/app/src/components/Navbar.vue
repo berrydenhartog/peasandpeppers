@@ -12,40 +12,11 @@
         </a>
       </div>
       <div class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
-        <div class="navbar-start">
-          <div class="navbar-item has-dropdown is-hoverable">
-            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase" :to="{ name: 'Maaltijden' }">
-              Shop
-            </router-link>
-            <div class="navbar-dropdown">
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Maaltijden' }">
-                Maaltijden
-              </router-link>
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Taarten'}">
-                Taarten
-              </router-link>
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'Overige' }">
-                Overige
-              </router-link>
-            </div>
-          </div>  
+        <div class="navbar-start"> 
           <div class="navbar-item has-dropdown  is-hoverable">
-            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Abonnementen'}">
-              Abonnementen
+            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'Catering'}">
+              Catering
             </router-link>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase" :to="{ name: 'HoeWijRollen' }">
-              Zo werkt het
-            </router-link>
-            <div class="navbar-dropdown">
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'HoeWijRollen' }">
-                Hoe Wij Rollen
-              </router-link>
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :to="{ name: 'FAQ' }">
-                FAQ
-              </router-link>
-            </div>
           </div>
           <div class="navbar-item has-dropdown  is-hoverable">
             <router-link v-on:click.native="toggleisactive" class="navbar-link is-uppercase is-arrowless" :to="{ name: 'OverOns'}">
@@ -61,30 +32,6 @@
 
         </div>
         <div class="navbar-end">
-          <div class="navbar-item has-dropdown is-hoverable">
-            <router-link class="navbar-item is-uppercase" :to="{ name: 'Account' }">
-              <span class="icon is-large">
-                <i class = "mdi mdi-24px mdi-account"></i> 
-              </span>
-            </router-link>
-            <div class="navbar-dropdown">
-              <router-link v-on:click.native="toggleisactive" class="navbar-item is-uppercase" :disabled="!user" :to="{ name: 'Account'}">
-                Bestellingen
-              </router-link>
-              <router-link v-on:click.native="toggleisactive" v-if="!user" class="navbar-item is-uppercase" :to="{ name: 'Login' }">
-                Login
-              </router-link>
-              <a v-if="user" @click="logout" class="navbar-item is-uppercase">
-                Logout
-              </a>
-            </div>
-          </div> 
-          <router-link v-on:click.native="toggleisactive" class="navbar-item" :to="{ name: 'Winkelwagen' }">
-            <span class="icon is-large">
-              <i v-if="producten.length" class = "mdi mdi-24px mdi-cart-arrow-right"></i> 
-              <i v-if="!producten.length" class = "mdi mdi-24px mdi-cart-outline"></i>
-            </span>
-          </router-link>
         </div>
       </div>
     </nav>

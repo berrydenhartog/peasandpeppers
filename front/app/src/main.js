@@ -8,6 +8,7 @@ import { AmplifyPlugin } from 'aws-amplify-vue';
 import aws_exports from './aws-exports';
 import VueMoment from 'vue-moment'
 import Auth from '@aws-amplify/auth';
+import Analytics from '@aws-amplify/analytics';
 const moment = require('moment')
 
 require('moment/locale/nl')
@@ -20,6 +21,11 @@ Auth.configure({
   //todo: rememberMe ? localStorage : sessionStorage
   storage: window.sessionStorage
 });
+
+Analytics.configure({
+});
+
+Analytics.autoTrack('pageView', { enable: true, type: 'SPA', })
 
 Vue.use(AmplifyPlugin, AmplifyModules);
 

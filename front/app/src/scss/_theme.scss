@@ -22,9 +22,32 @@
 }
 
 .marginmain {
-  padding-top: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.marginmain2 {
+  padding-top: 3rem;
+  padding-bottom: 8rem;
 }
 
 .columncentercontent {
   text-align: center;
+}
+
+.spacertest {
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.test {
+  @include until($desktop) {
+    
+  }
+}
+
+.test3 {
+  @include until($desktop) {
+      font-size: 0.7rem !important;
+    }
 }
