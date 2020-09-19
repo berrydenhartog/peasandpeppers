@@ -1,5 +1,5 @@
-# PeasEnPeppers
-Webshop voor Peas and Peppers waar vegan gerechten verkocht worden. deze gerechten verschillen per dag. het kunnen meerdere gerechten zijn per dag. 
+# PeasAndPeppers
+Webshop for peasandpeppers.nl where yo ucan buy vegan dishes. they can very per day and month waar. You can have any number of dishes per day. 
 
 # Amazon web services
 This project uses AWS. 
@@ -10,3 +10,4 @@ This project uses AWS.
     - lambda function for quering database
     - SES for e-mail services
     - route53 voor dns management
+    - cloudfront for ssl
